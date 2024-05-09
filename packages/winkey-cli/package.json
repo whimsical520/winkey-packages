@@ -1,6 +1,6 @@
 {
   "name": "winkey-cli",
-  "version": "0.0.0",
+  "version": "1.0.9",
   "description": "> TODO: description",
   "author": "tanridong <tanridong@yy.com>",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "commander": "^12.0.0",
-    "winkey-log": "^1.0.8"
+    "winkey-log": "^1.0.9"
   },
   "devDependencies": {
     "@types/node": "^20.12.11"
