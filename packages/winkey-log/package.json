@@ -2,7 +2,7 @@
   "name": "winkey-log",
   "version": "1.0.8",
   "description": "winkey logger",
-  "author": "whimsical520",
+  "author": "Ricardom520",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
   "license": "ISC",
   "main": "dist/index.cjs.js",
