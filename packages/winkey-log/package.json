@@ -19,7 +19,7 @@
     {
       "name": "whimsical520",
       "email": "378445195@qq.com"
-    },
+    }
   ],
   "scripts": {
     "prettier": "prettier --write ./**",
