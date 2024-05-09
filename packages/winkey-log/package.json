@@ -1,0 +1,27 @@
+{
+  "name": "winkey-log",
+  "version": "1.0.8",
+  "description": "winkey logger",
+  "author": "whimsical520",
+  "homepage": "https://github.com/whimsical520/winkey-packages#readme",
+  "license": "ISC",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whimsical520/winkey-packages.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/winkey-log.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/whimsical520/winkey-packages/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "winkey-packages",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/whimsical520/winkey-packages.git",
+  "author": "whimsical520",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.6.2"
+  }
+}
