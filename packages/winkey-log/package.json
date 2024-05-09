@@ -1,6 +1,6 @@
 {
   "name": "winkey-log",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "winkey logger",
   "author": "Ricardom520",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
@@ -23,5 +23,6 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.11"
-  }
+  },
+  "gitHead": "2e43f1834451ecdae09f05aea7daea30b10d58c1"
 }
