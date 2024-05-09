@@ -6,4 +6,4 @@ const localConfig = new LocalConfig()
 
 export const initAction = async (_, cmder: ActionSturct) => {
  
-}
+} 
