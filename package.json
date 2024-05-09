@@ -1,5 +1,6 @@
 {
   "name": "winkey-packages",
+  "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/whimsical520/winkey-packages.git",
@@ -9,6 +10,6 @@
     "packages/*"
   ],
   "devDependencies": {
-    "lerna": "^5.6.2"
+    "lerna": "^8.1.2"
   }
 }

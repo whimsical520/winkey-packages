@@ -29,10 +29,11 @@
   },
   "dependencies": {
     "commander": "^12.0.0",
-    "winkey-log": "^1.0.11"
+    "winkey-log": "^1.0.10"
   },
   "devDependencies": {
-    "@types/node": "^20.12.11"
+    "@types/node": "^20.12.11",
+    "cross-env": "^7.0.3"
   },
-  "gitHead": "9bd1006b098a52fe6341b533177747a51a95d2d8"
+  "gitHead": "ab8f42b9a2ff0c17852ff09f0c559787bcacf0bd"
 }
