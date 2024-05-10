@@ -7,7 +7,7 @@ export const spinner = ora()
 class LogSpinner {
   private spinner
   private timer
-  private speedTime
+  private speedTime = 0
 
   infoSpinner(text: string) {
     spinner.stopAndPersist({
@@ -69,7 +69,7 @@ class LogSpinner {
   }
 
   waitSpinner(text?: string) {
-    if (!this.timer) return
+    if (this.timer) return
     this.spinner = ora({
       prefixText: text || '正在执行',
       spinner: 'monkey'
@@ -103,15 +103,17 @@ class LogSpinner {
   }
 
   finishSpinner(text?: string, status?: number) {
-    clearInterval(this.timer)
-    this.timer = null
-    this.spinner = null
-    this.spinner.stop()
     if (status) {
       this.failSpinner(text || 'sorry~失败')
     } else {
       this.succeedSpiner(`consume:${this.speedTime / 1000}s ${text}` || '结束咯~')
     }
+
+    clearInterval(this.timer)
+    this.timer = null
+    this.speedTime = 0
+    this.spinner.stop()
+    this.spinner = null
   }
 }
 

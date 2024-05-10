@@ -1,5 +1,5 @@
 {
-  "name": "winkey-cli",
+  "name": "winkey-os",
   "version": "1.0.13-y.1",
   "description": "> TODO: description",
   "author": "Ricardom520 <1781218530@qq.com>",
@@ -12,12 +12,8 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "bin": {
-    "winkey": "./bin.js"
-  },
   "files": [
-    "bin",
-    "bin.js"
+    "dist"
   ],
   "prettier": {
     "tabWidth": 2,
@@ -42,31 +38,21 @@
   "bugs": {
     "url": "https://github.com/whimsical520/winkey-packages/issues"
   },
-  "dependencies": {
-    "axios": "^1.6.8",
-    "commander": "^12.0.0",
-    "ts-node": "^10.9.2",
-    "winkey-log": "1.0.13-y.1",
-    "winkey-os": "^1.0.13-y.1"
-  },
   "devDependencies": {
-    "@types/node": "^20.12.11",
-    "cross-env": "^7.0.3",
-    "eslint-plugin-prettier": "5.0.0",
-    "prettier": "3.2.2",
-    "rimraf": "^5.0.5",
-    "rollup": "2.78.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.12.11",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "prettier": "3.2.2",
+    "rollup": "2.78.0",
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
-  },
-  "gitHead": "a26b2a635908ecf8d43d79d7ccfd9e2c05b11004"
+  }
 }

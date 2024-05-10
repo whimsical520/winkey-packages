@@ -35,6 +35,59 @@ class LocalConfig {
       DEFAULT_LOCAL_SEED_CONFIG
     )
   }
+
+  async get() {
+    return await this.handle.get()
+  }
+
+  async updateSeedInfo() {
+    // update config
+    const setting = await this.handle.get()
+    const pluginPkg = await this.pkgHandle.get()
+
+    setting.seeds = Object.keys(pluginPkg.dependencies)
+    setting.seedMap = {}
+    setting.seeds.forEach((seedName) => {
+      const seedPath = path.join(
+        path.dirname(this.pkgHandle.savePath),
+        'node_modules',
+        seedName
+      )
+
+      const seedPkgPath = path.join(seedPath, 'package.json')
+
+      if (fs.existsSync(seedPkgPath)) {
+
+        const pkg = require(seedPkgPath)
+        setting.seedMap[seedName] = {
+          name: seedName,
+          version: pkg.version,
+          main: path.resolve(seedPath, pkg.main)
+        }
+      }
+    })
+
+    const localSeedMap = await this.seedHandle.get()
+
+    Object.keys(localSeedMap).forEach((seedName) => {
+      if (setting.seeds.indexOf(seedName) === -1) {
+        setting.seeds.push(seedName)
+      }
+
+      setting.seedMap[seedName] = localSeedMap[seedName]
+    })
+
+    return await this.handle.set(setting)
+  }
+
+  // 重置 config
+  async reset() {
+    await this.handle.set(DEFAULT_CONFIG)
+    await this.pkgHandle.set(DEFAULT_PKG_CONFIG)
+    await this.seedHandle.set(DEFAULT_LOCAL_SEED_CONFIG)
+    await this.updateSeedInfo()
+    return await this.get()
+  }
 }
 
 export default LocalConfig
