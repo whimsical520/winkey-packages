@@ -1,0 +1,6 @@
+40 error TypeError: resolvedPrettier.resolveConfig.sync is not a function
+40 error     at maybeFormatFile (C:\Users\tanridong\AppData\Roaming\npm\node_modules\lerna\node_modules\@lerna\version\lib\git-add.js:32:49)
+40 error     at gitAdd (C:\Users\tanridong\AppData\Roaming\npm\node_modules\lerna\node_modules\@lerna\version\lib\git-add.js:51:5)
+40 error     at C:\Users\tanridong\AppData\Roaming\npm\node_modules\lerna\node_modules\@lerna\version\index.js:648:32
+40 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+40 error     at async Promise.all (index 0)
