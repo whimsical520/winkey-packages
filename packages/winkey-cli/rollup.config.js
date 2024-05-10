@@ -8,9 +8,9 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      file: 'dist/index.cjs.js',
+      file: 'dist/index.js',
       format: 'cjs',
-      entryFileNames: '[name].cjs.js'
+      entryFileNames: '[name].js'
     },
     plugins: [
       del({
@@ -24,21 +24,5 @@ export default [
       })
     ]
     // external: [...] // 外部引用的库，不要打包，用于处理 peerDependencies
-  },
-  {
-    input: 'src/index.ts',
-    output: {
-      file: 'dist/index.esm.js',
-      format: 'esm',
-      entryFileNames: '[name].esm.js'
-    },
-    plugins: [
-      nodeResolve(),
-      commonjs(),
-      json(),
-      typescript({
-        tsconfig: './tsconfig.json'
-      })
-    ]
   }
 ]

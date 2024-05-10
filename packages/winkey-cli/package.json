@@ -5,9 +5,7 @@
   "author": "Ricardom520 <1781218530@qq.com>",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
   "license": "ISC",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -16,7 +14,7 @@
     "winkey": "./bin.js"
   },
   "files": [
-    "bin",
+    "dist",
     "bin.js"
   ],
   "prettier": {

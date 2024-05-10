@@ -1,0 +1,26 @@
+{
+  "name": "winkey-init-config-vite",
+  "version": "2.0.0",
+  "description": "> TODO: description",
+  "author": "Ricardom520 <1781218530@qq.com>",
+  "homepage": "https://github.com/whimsical520/winkey-packages#readme",
+  "license": "ISC",
+  "main": "lib/winkey-init-config-vite.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whimsical520/winkey-packages.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/winkey-init-config-vite.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/whimsical520/winkey-packages/issues"
+  }
+}
