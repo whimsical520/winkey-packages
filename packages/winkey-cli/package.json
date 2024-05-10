@@ -31,10 +31,9 @@
     "url": "git+https://github.com/whimsical520/winkey-packages.git"
   },
   "scripts": {
-    "eslint": "eslint --ext=jsx,ts,tsx ./",
-    "prettier": "prettier --write ./src/**",
-    "build": "rollup -c",
-    "prepublishOnly": "npm run prettier & npm run build",
+    "clear": "rimraf build",
+    "build": "npm run clear && tsc --build ./tsconfig.json",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bugs": {

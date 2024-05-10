@@ -5569,7 +5569,7 @@ wide-align@^1.1.5:
     string-width "^1.0.2 || 2 || 3 || 4"
 
 "winkey-cli@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-cli":
-  version "2.0.1"
+  version "2.0.2"
   resolved "file:packages/winkey-cli"
   dependencies:
     axios "^1.6.8"
