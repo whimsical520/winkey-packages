@@ -1,6 +1,6 @@
 {
   "name": "winkey-log",
-  "version": "1.0.13-alpha.1",
+  "version": "1.0.13-y.0",
   "description": "winkey logger",
   "author": "Ricardom520 <1781218530@qq.com>",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
@@ -55,7 +55,7 @@
     "@typescript-eslint/parser": "6.21.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-prettier": "5.0.0",
     "prettier": "3.2.2",
     "rollup": "2.78.0",
     "rollup-plugin-delete": "^2.0.0",
