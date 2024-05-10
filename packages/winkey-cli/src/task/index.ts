@@ -1,4 +1,4 @@
-import { initAction } from "./init"
+import { initAction } from './init'
 import { buildAction } from './build'
 import { devAction } from './dev'
 import { installAction } from './install'

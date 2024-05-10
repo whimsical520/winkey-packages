@@ -42,7 +42,7 @@ export default {
     SEED_INSTALLSTART: '开始更新 seed 包',
     SEED_INSTALLED: '更新 seed 包 完成',
     SEED_LOADING: '正在加载 seed 包',
-    SEED_INSTALLING: '正在更新 seed 包',
+    SEED_INSTALLING: '正在更新 seed 包'
   },
   WINKEY: {
     DEFAULT: 'winkey 脚手架命令行展示:',

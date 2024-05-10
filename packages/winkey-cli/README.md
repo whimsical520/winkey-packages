@@ -1,11 +1,13 @@
-# winkey-cli 一个vite的脚手架
+# winkey-cli 一个 vite 的脚手架
 
 ## 轻量化脚手架，简单上手，便捷开发
 
 ### 安装
-- npm i winkey-cli -g 
+
+- npm i winkey-cli -g
 
 ### 执行命令
+
 - winkey dev (path)
   本地执行
 
@@ -18,23 +20,25 @@
 - winkey list
   查看所有命令
 
-- winkey list --seeds | -s 
-  查看所有seeds包
+- winkey list --seeds | -s
+  查看所有 seeds 包
 
 - winkey update
-  更新seeds包
+  更新 seeds 包
 
-- winkey install (seeds包名称可带版本号)
-  直接安装seed包
+- winkey install (seeds 包名称可带版本号)
+  直接安装 seed 包
 
 ### 包类型
+
 - vite-project 项目模板
 
 - vite-component 组件模板
 
-- vite-qiankun 微前端qiankun子应用模板
+- vite-qiankun 微前端 qiankun 子应用模板
 
 ### winkey.config 配置
+
 ```
 /** 根目录 */
 root?: string

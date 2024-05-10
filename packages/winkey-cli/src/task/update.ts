@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import path from 'path'
 import fs from 'fs'
-import inquirer from 'inquirer' 
+import inquirer from 'inquirer'
 import { logger, LogType } from 'winkey-log'
 import { SeedDataStruct, SeedItemStruct } from '../model/seed'
 import { seedFull2Short } from '../lib/formatter'
@@ -41,7 +41,7 @@ export const updateAction = async (_, cmder?: ActionSturct) => {
     const { dev } = seedItem
     const name = seed
     const shortName = seedFull2Short(name)
-    
+
     return {
       name,
       shortName,

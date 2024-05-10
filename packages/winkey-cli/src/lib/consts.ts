@@ -10,7 +10,7 @@ export const getRootName = () => {
   // linux 环境
   if (platform.indexOf('win') === -1) {
     rootPath.replace(/\//g, '\\')
-  } 
+  }
 
   const arr = rootPath.split('\\')
 
@@ -20,8 +20,7 @@ export const getRootName = () => {
 export const IS_WINDOWS = process.platform === 'win32'
 
 /** 用户根目录 */
-export const USERPROFILE =
-  process.env[IS_WINDOWS ? 'USERPROFILE' : 'HOME']
+export const USERPROFILE = process.env[IS_WINDOWS ? 'USERPROFILE' : 'HOME']
 
 /** 配置目录 */
 export const CONFIG_PATH = path.join(USERPROFILE, '.init-project')

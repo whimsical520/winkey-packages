@@ -54,5 +54,6 @@
     "rollup": "2.78.0",
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
-  }
+  },
+  "gitHead": "48ff904e17db43dafcba49da8ba58d66b475ad56"
 }

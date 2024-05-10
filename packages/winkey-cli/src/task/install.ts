@@ -6,7 +6,7 @@ import lang from '../lang'
 import LocalConfig from '../lib/localConfig'
 import { mkdirSync } from '../lib/utils'
 import { CONFIG_PLUGIN_PATH } from '../lib/consts'
-import type { ActionSturct } from "../model/action"
+import type { ActionSturct } from '../model/action'
 
 const localConfig = new LocalConfig()
 
@@ -26,7 +26,7 @@ export async function installAction(names: string[], cmder?: ActionSturct) {
 
     names = []
 
-    res.forEach(item => {
+    res.forEach((item) => {
       if (!names.includes(item)) {
         names.push(item)
       }

@@ -5569,7 +5569,7 @@ wide-align@^1.1.5:
     string-width "^1.0.2 || 2 || 3 || 4"
 
 "winkey-cli@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-cli":
-  version "2.0.0"
+  version "2.0.1-alpha.0"
   resolved "file:packages/winkey-cli"
   dependencies:
     axios "^1.6.8"
@@ -5578,12 +5578,12 @@ wide-align@^1.1.5:
     winkey-log "^2.0.0"
     winkey-os "^2.0.0"
 
-winkey-log@^2.0.0, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
-  version "2.0.0"
+winkey-log@^2.0.1-alpha.0, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
+  version "2.0.1-alpha.0"
   resolved "file:packages/winkey-log"
 
-winkey-os@^2.0.0, "winkey-os@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-os":
-  version "2.0.0"
+winkey-os@^2.0.1-alpha.0, "winkey-os@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-os":
+  version "2.0.1-alpha.0"
   resolved "file:packages/winkey-os"
 
 word-wrap@^1.2.5:

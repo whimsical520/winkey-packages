@@ -5,7 +5,7 @@ import { SeedMapStruct } from '../model/seed'
 /** sleep 函数 */
 function wait(num) {
   return new Promise((resolve) => {
-    setTimeout(() => {  
+    setTimeout(() => {
       resolve(null)
     }, num)
   })
@@ -18,12 +18,9 @@ async function searchWinkeyNpm(key: string) {
   try {
     await wait(2000)
 
-    const result = await axios.get(
-      `https://www.npmjs.com/search/suggestions?q=${key}`,
-      {
-        timeout: 3000
-      }
-    )
+    const result = await axios.get(`https://www.npmjs.com/search/suggestions?q=${key}`, {
+      timeout: 3000
+    })
 
     return result.data || []
   } catch (err) {
@@ -49,7 +46,7 @@ export async function listSeed() {
       //     winkeySeeds[item.name] = item
       //   })
       // } else {
-      winkeySeeds = result.map(item => item.name)
+      winkeySeeds = result.map((item) => item.name)
       // }
     }
     return winkeySeeds
@@ -58,7 +55,7 @@ export async function listSeed() {
   }
 
   return winkeySeeds
-} 
+}
 
 export async function listSeedMap() {
   let winkeySeeds: SeedMapStruct | Object = {}
@@ -71,7 +68,7 @@ export async function listSeedMap() {
     result.forEach((item) => {
       winkeySeeds[item.name] = item
     })
-      
+
     return winkeySeeds
   } catch (err) {
     logger(LogType.Error, `seeds 包返回错误: ${err}`)

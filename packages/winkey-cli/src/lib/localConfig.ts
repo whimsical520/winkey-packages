@@ -30,10 +30,7 @@ class LocalConfig {
   constructor() {
     this.handle = new LocalStorage('config', DEFAULT_CONFIG)
     this.pkgHandle = new LocalStorage('plugins/package', DEFAULT_PKG_CONFIG)
-    this.seedHandle = new LocalStorage(
-      'local-seed.config',
-      DEFAULT_LOCAL_SEED_CONFIG
-    )
+    this.seedHandle = new LocalStorage('local-seed.config', DEFAULT_LOCAL_SEED_CONFIG)
   }
 
   async get() {
@@ -48,16 +45,11 @@ class LocalConfig {
     setting.seeds = Object.keys(pluginPkg.dependencies)
     setting.seedMap = {}
     setting.seeds.forEach((seedName) => {
-      const seedPath = path.join(
-        path.dirname(this.pkgHandle.savePath),
-        'node_modules',
-        seedName
-      )
+      const seedPath = path.join(path.dirname(this.pkgHandle.savePath), 'node_modules', seedName)
 
       const seedPkgPath = path.join(seedPath, 'package.json')
 
       if (fs.existsSync(seedPkgPath)) {
-
         const pkg = require(seedPkgPath)
         setting.seedMap[seedName] = {
           name: seedName,

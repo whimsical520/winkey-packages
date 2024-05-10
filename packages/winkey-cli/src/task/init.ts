@@ -46,7 +46,7 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
     const { version, dev } = seedItem
     const name = seed
     const shortName = seedFull2Short(name)
-    
+
     return {
       name,
       shortName,
@@ -59,18 +59,19 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
   })
 
   seedItems = seedItems.concat(
-    seeds.filter((name) => installedSeeds.indexOf(name) === -1)
-    .map((name) => {
-      const shortName = seedFull2Short(name)
+    seeds
+      .filter((name) => installedSeeds.indexOf(name) === -1)
+      .map((name) => {
+        const shortName = seedFull2Short(name)
 
-      return {
-        name,
+        return {
+          name,
           shortName,
           installed: false,
           dev: false,
           choice: chalk.gray(shortName)
-      }
-    })
+        }
+      })
   )
 
   seedItems.sort((a, b) => {
@@ -125,14 +126,16 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
 
   const iSeedPack = require((config as SeedDataStruct).seedMap[seedInfo.name].main)
 
-   // 启动前 hooks
-   if (iSeedPack?.hooks?.beforeStart) {
+  // 启动前 hooks
+  if (iSeedPack?.hooks?.beforeStart) {
     logger(LogType.Info, lang.INIT.HOOKS_BEFORE_START_RUN)
-    await iSeedPack.hooks.beforeStart({
-      targetPath: targetPath
-    }).catch((err) => {
-      logger(LogType.Error, err)
-    })
+    await iSeedPack.hooks
+      .beforeStart({
+        targetPath: targetPath
+      })
+      .catch((err) => {
+        logger(LogType.Error, err)
+      })
     logger(LogType.Info, lang.INIT.HOOKS_BEFORE_START_FINISHED)
   }
 
@@ -144,10 +147,7 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
 
   let fileMap = {}
   const iSeedConfig = (config as SeedDataStruct).seedMap[iSeed]
-  const seedSourcePath = path.resolve(
-    path.dirname(iSeedConfig.main),
-    iSeedPack.path
-  )
+  const seedSourcePath = path.resolve(path.dirname(iSeedConfig.main), iSeedPack.path)
 
   logger(LogType.Info, lang.INIT.SEED_COPY_MAP_PRINT)
 
@@ -162,25 +162,23 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
   try {
     files = await readFilePaths(seedSourcePath)
   } catch (err) {
-    throw err    
+    throw err
   }
 
   files.forEach((iPath) => {
-    fileMap[iPath] = [
-      path.resolve(targetPath, path.relative(seedSourcePath, iPath))
-    ]
+    fileMap[iPath] = [path.resolve(targetPath, path.relative(seedSourcePath, iPath))]
   })
 
   // 复制前 hooks
   if (iSeedPack.hooks && iSeedPack.hooks.beforeCopy) {
     logger(LogType.Info, lang.INIT.HOOKS_BEFORE_COPY_RUN)
 
-    let rMap 
+    let rMap
 
     try {
       rMap = await iSeedPack.hooks.beforeCopy({
         fileMap,
-        targetPath,
+        targetPath
       })
     } catch (er) {
       throw er
@@ -227,4 +225,4 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
 
     logger(LogType.Info, lang.INIT.HOOKS_AFTER_COPY_FINISHED)
   }
-} 
+}
