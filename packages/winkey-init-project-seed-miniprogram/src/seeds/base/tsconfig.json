@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ES6",
+    "module": "CommonJS",
+    "strict": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": ["dom", "es2015", "scripthost"],
+    "rootDir": "src",
+    "outDir": "./output",
+    "declarationDir": "./output",
+    "declaration": true,
+    "types": ["miniprogram-api-typings"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/**"]
+} 
