@@ -1,5 +1,5 @@
 export declare interface ConfigEnv {
-  command: 'build' | 'serve';
+  command: "build" | "serve";
   mode: string;
   /**
    * @experimental

@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "eslint": "eslint --ext=jsx,ts,tsx ./",
-    "prettier": "prettier --write ./**",
+    "prettier": "prettier --write ./src/**",
     "build": "rollup -c",
     "prepublishOnly": "npm run prettier & npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

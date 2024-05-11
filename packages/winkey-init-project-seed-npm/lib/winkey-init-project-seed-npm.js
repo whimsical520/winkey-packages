@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = winkeyInitProjectSeedNpm;
 
 function winkeyInitProjectSeedNpm() {
-    return "Hello from winkeyInitProjectSeedNpm";
+  return "Hello from winkeyInitProjectSeedNpm";
 }
