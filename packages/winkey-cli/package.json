@@ -60,10 +60,10 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "4.0.0",
     "prettier": "2.6.2",
-    "rimraf": "^5.0.5",
+    "rimraf": "3.0.2",
     "rollup": "2.78.0",
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
   },
-  "gitHead": "48ff904e17db43dafcba49da8ba58d66b475ad56"
+  "gitHead": "8a4234b4366ae29e3cf7e3f57d4a818b0d4fe46e"
 }

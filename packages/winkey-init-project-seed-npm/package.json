@@ -48,5 +48,6 @@
     "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-typescript2": "0.34.1"
-  }
+  },
+  "gitHead": "8a4234b4366ae29e3cf7e3f57d4a818b0d4fe46e"
 }

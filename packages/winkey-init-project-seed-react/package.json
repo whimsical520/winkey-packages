@@ -15,7 +15,7 @@
     "prettier": "prettier --write ./src/**",
     "dev": "tsc",
     "build": "rollup -c",
-    "prepublishOnly": "npm run prettier & npm run build"
+    "prepublishOnly": "npm run build"
   },
   "prettier": {
     "tabWidth": 2,
@@ -41,5 +41,6 @@
     "rollup": "2.78.0",
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
-  }
+  },
+  "gitHead": "8a4234b4366ae29e3cf7e3f57d4a818b0d4fe46e"
 }
