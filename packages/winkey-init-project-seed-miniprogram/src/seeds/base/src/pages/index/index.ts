@@ -3,40 +3,41 @@ import type { IAppOption } from '../../models/base'
 // index.ts
 // 获取应用实例
 const app = getApp<IAppOption>()
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+const defaultAvatarUrl =
+  'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
 Component({
   data: {
     motto: 'Hello World',
     userInfo: {
       avatarUrl: defaultAvatarUrl,
-      nickName: '',
+      nickName: ''
     },
     hasUserInfo: false,
     canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
+    canIUseNicknameComp: wx.canIUse('input.type.nickname')
   },
   methods: {
     // 事件处理函数
     bindViewTap() {
       wx.navigateTo({
-        url: '../logs/logs',
+        url: '../logs/logs'
       })
     },
     onChooseAvatar(e: any) {
       const { avatarUrl } = e.detail
       const { nickName } = this.data.userInfo
       this.setData({
-        "userInfo.avatarUrl": avatarUrl,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
+        'userInfo.avatarUrl': avatarUrl,
+        'hasUserInfo': nickName && avatarUrl && avatarUrl !== defaultAvatarUrl
       })
     },
     onInputChange(e: any) {
       const nickName = e.detail.value
       const { avatarUrl } = this.data.userInfo
       this.setData({
-        "userInfo.nickName": nickName,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
+        'userInfo.nickName': nickName,
+        'hasUserInfo': nickName && avatarUrl && avatarUrl !== defaultAvatarUrl
       })
     },
     getUserProfile() {
@@ -51,6 +52,6 @@ Component({
           })
         }
       })
-    },
-  },
+    }
+  }
 })

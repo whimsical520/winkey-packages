@@ -4,7 +4,7 @@ import { formatTime } from '../../utils/util'
 
 Component({
   data: {
-    logs: [],
+    logs: []
   },
   lifetimes: {
     attached() {
@@ -15,8 +15,8 @@ Component({
             date: formatTime(new Date(log)),
             timeStamp: log
           }
-        }),
+        })
       })
     }
-  },
+  }
 })

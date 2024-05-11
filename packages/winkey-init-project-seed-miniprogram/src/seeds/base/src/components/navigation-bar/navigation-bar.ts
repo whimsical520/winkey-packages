@@ -32,7 +32,7 @@ Component({
     },
     homeButton: {
       type: Boolean,
-      value: false,
+      value: false
     },
     animated: {
       // 显示隐藏的时候opacity动画效果
@@ -49,7 +49,7 @@ Component({
     delta: {
       type: Number,
       value: 1
-    },
+    }
   },
   /**
    * 组件的初始数据
@@ -67,12 +67,15 @@ Component({
           this.setData({
             ios: !isAndroid,
             innerPaddingRight: `padding-right: ${res.windowWidth - rect.left}px`,
-            leftWidth: `width: ${res.windowWidth - rect.left }px`,
-            safeAreaTop: isDevtools || isAndroid ? `height: calc(var(--height) + ${res.safeArea.top}px); padding-top: ${res.safeArea.top}px` : ``
+            leftWidth: `width: ${res.windowWidth - rect.left}px`,
+            safeAreaTop:
+              isDevtools || isAndroid
+                ? `height: calc(var(--height) + ${res.safeArea.top}px); padding-top: ${res.safeArea.top}px`
+                : ``
           })
         }
       })
-    },
+    }
   },
   /**
    * 组件的方法列表
@@ -82,9 +85,7 @@ Component({
       const animated = this.data.animated
       let displayStyle = ''
       if (animated) {
-        displayStyle = `opacity: ${
-          show ? '1' : '0'
-        };transition:opacity 0.5s;`
+        displayStyle = `opacity: ${show ? '1' : '0'};transition:opacity 0.5s;`
       } else {
         displayStyle = `display: ${show ? '' : 'none'}`
       }
@@ -101,5 +102,5 @@ Component({
       }
       this.triggerEvent('back', { delta: data.delta }, {})
     }
-  },
+  }
 })

@@ -1,21 +1,21 @@
-import { runCMD, runSpawn, openBrowser } from 'winkey-os'
-import inquirer from 'inquirer'
-import path from 'path'
-import chalk from 'chalk'
-import fs from 'fs'
-import { lang } from './lang'
-import { dataRender } from './tools'
+import { runCMD, runSpawn, openBrowser } from "winkey-os";
+import inquirer from "inquirer";
+import path from "path";
+import chalk from "chalk";
+import fs from "fs";
+import { lang } from "./lang";
+import { dataRender } from "./tools";
 
 let initData = {
-  name: '',
-  platform: '',
-  type: '',
-  yarn: 'true',
-  winkeyVersion: '2.0.0'
-}
+  name: "",
+  platform: "",
+  type: "",
+  yarn: "true",
+  winkeyVersion: "2.0.0",
+};
 
 const config = {
-  path: './seeds/base',
+  path: "./seeds/base",
   hooks: {
     /**
      * seed 包执行前 hooks
@@ -25,25 +25,25 @@ const config = {
      * beforeStart({env, targetPath})
      */
     async beforeStart({ targetPath }: { targetPath: string }) {
-      const questions = []
+      const questions = [];
 
       questions.push({
-        type: 'input',
-        name: 'name',
+        type: "input",
+        name: "name",
         default: targetPath.split(/[\\/]/).pop(),
-        message: `${lang.QUESTION_NAME}`
-      })
+        message: `${lang.QUESTION_NAME}`,
+      });
 
       const isYarn = await inquirer.prompt([
         {
-          type: 'confirm',
-          name: 'yarn',
+          type: "confirm",
+          name: "yarn",
           message: `${lang.QUEATION_USE_YARN}`,
-          default: true
-        }
-      ])
+          default: true,
+        },
+      ]);
 
-      initData = Object.assign(initData, isYarn)
+      initData = Object.assign(initData, isYarn);
     },
     /**
      * 复制操作后 hooks
@@ -55,95 +55,98 @@ const config = {
      */
     async afterCopy({
       targetPath,
-      logger
+      logger,
     }: {
-      targetPath: string
-      logger: (type: string, text: string) => void
+      targetPath: string;
+      logger: (type: string, text: string) => void;
     }) {
-      const targetPkgPath = path.join(targetPath, 'package.json')
+      const targetPkgPath = path.join(targetPath, "package.json");
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const targetPkg = require(targetPkgPath)
-      fs.writeFileSync(targetPkgPath, JSON.stringify(targetPkg, null, 2))
-      logger('update', targetPkgPath)
+      const targetPkg = require(targetPkgPath);
+      fs.writeFileSync(targetPkgPath, JSON.stringify(targetPkg, null, 2));
+      logger("update", targetPkgPath);
 
-      logger('info', lang.FORMAT_FILE_START)
-      let rPaths = []
+      logger("info", lang.FORMAT_FILE_START);
+      let rPaths = [];
 
       rPaths = [
-        path.join(targetPath, 'winkey.config.ts'),
-        path.join(targetPath, 'package.json'),
-        path.join(targetPath, 'README.md')
-      ]
+        path.join(targetPath, "winkey.config.ts"),
+        path.join(targetPath, "package.json"),
+        path.join(targetPath, "README.md"),
+      ];
 
       rPaths.forEach((iPath) => {
         if (fs.existsSync(iPath)) {
-          const cnt = fs.readFileSync(iPath).toString()
-          fs.writeFileSync(iPath, dataRender(cnt, initData))
-          logger('update', lang.FORMAT_FILE_START)
+          const cnt = fs.readFileSync(iPath).toString();
+          fs.writeFileSync(iPath, dataRender(cnt, initData));
+          logger("update", lang.FORMAT_FILE_START);
         }
-      })
-      logger('success', lang.FORMAT_FILE_FINISHED)
+      });
+      logger("success", lang.FORMAT_FILE_FINISHED);
       // - format
 
       // + install
-      logger('info', lang.NPM_INSTALL_START)
-      let cmd = ''
-      let initCmd = ''
+      logger("info", lang.NPM_INSTALL_START);
+      let cmd = "";
+      let initCmd = "";
       if (initData.yarn) {
         try {
           const version = await runCMD({
-            cmd: 'yarn -v',
+            cmd: "yarn -v",
             targetPath: process.cwd(),
-            logger
-          })
-          logger('info', `${lang.YARN_VERSION}: ${chalk.green(version)}`)
-          cmd = `yarn install`
-          initCmd = 'yarn init -y'
+            logger,
+          });
+          logger("info", `${lang.YARN_VERSION}: ${chalk.green(version)}`);
+          cmd = `yarn install`;
+          initCmd = "yarn init -y";
         } catch (er) {
-          logger('warn', `${lang.NEED_INSTALL_YARN}: ${chalk.green('npm i yarn -g')}`)
+          logger(
+            "warn",
+            `${lang.NEED_INSTALL_YARN}: ${chalk.green("npm i yarn -g")}`,
+          );
         }
       } else {
-        cmd = `npm install`
-        initCmd = 'npm init -y'
+        cmd = `npm install`;
+        initCmd = "npm init -y";
       }
 
       if (cmd) {
-        logger('cmd', cmd)
+        logger("cmd", cmd);
 
         await runSpawn({
           cmd,
           targetPath,
-          type: 'inherit',
-          logger
-        })
-        if (initData.platform === 'both') {
+          type: "inherit",
+          logger,
+        });
+        if (initData.platform === "both") {
           await runCMD({
             cmd,
-            targetPath: path.join(targetPath, 'pc')
-          })
+            targetPath: path.join(targetPath, "pc"),
+          });
           await runCMD({
             cmd,
-            targetPath: path.join(targetPath, 'mobile')
-          })
+            targetPath: path.join(targetPath, "mobile"),
+          });
         }
-        logger('info', lang.INIT_PKG)
-        logger('cmd', initCmd)
+        logger("info", lang.INIT_PKG);
+        logger("cmd", initCmd);
         await runCMD({
           cmd: initCmd,
-          targetPath: targetPath
-        })
+          targetPath: targetPath,
+        });
       }
 
-      logger('info', `${lang.OPEN_PATH}: ${chalk.green(targetPath)}`)
-      await openBrowser(targetPath)
+      logger("info", `${lang.OPEN_PATH}: ${chalk.green(targetPath)}`);
+      await openBrowser(targetPath);
 
-      const readmePath = path.join(targetPath, 'README.md')
-      logger('info', `${lang.OPEN_README}: ${chalk.green(readmePath)}`)
-      await openBrowser(readmePath)
+      const readmePath = path.join(targetPath, "README.md");
+      logger("info", `${lang.OPEN_README}: ${chalk.green(readmePath)}`);
+      await openBrowser(readmePath);
 
-      logger('success', lang.NPM_INSTALL_FINISHED)
-    }
-  }
-}
+      logger("success", lang.NPM_INSTALL_FINISHED);
+    },
+  },
+};
 
-export default config
+export default config;
