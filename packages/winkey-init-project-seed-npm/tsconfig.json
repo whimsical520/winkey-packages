@@ -11,7 +11,7 @@
   },
   // 只编译 src 目录下的文件
   "include": ["src"],
-  "exclude": ["node_modules", "dist"],
+  "exclude": ["node_modules", "dist", "./src/seeds/**/*",],
   "ts-node": {
     "esm": true
   }
