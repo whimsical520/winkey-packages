@@ -1,6 +1,6 @@
 {
   "name": "winkey-cli",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "> TODO: description",
   "author": "Ricardom520 <1781218530@qq.com>",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
@@ -43,8 +43,8 @@
     "axios": "^1.6.8",
     "commander": "^12.0.0",
     "ts-node": "^10.9.2",
-    "winkey-log": "^2.0.11",
-    "winkey-os": "^2.0.11"
+    "winkey-log": "^2.0.12",
+    "winkey-os": "^2.0.12"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
