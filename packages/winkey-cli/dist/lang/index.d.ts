@@ -51,5 +51,9 @@ declare const _default: {
         LISTSEEDS: string;
         UPDATESEEDS: string;
     };
+    DEV: {
+        MINIPROGRAM_TARGET: string;
+        MINIPROGRAM_PLATFORM: string;
+    };
 };
 export default _default;

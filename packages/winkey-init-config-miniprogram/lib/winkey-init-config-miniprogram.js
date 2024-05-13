@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = winkeyInitConfigMiniprogram;
 
 function winkeyInitConfigMiniprogram() {
-    return "Hello from winkeyInitConfigMiniprogram";
+  return "Hello from winkeyInitConfigMiniprogram";
 }

@@ -43,5 +43,6 @@
     "vite-plugin-qiankun": "1.0.15",
     "vite-plugin-stylelint": "3.0.8",
     "vite-tsconfig-paths": "3.5.2"
-  }
+  },
+  "gitHead": "315f18340ef7a8870cd23c88ac1e111e1c0c5cfd"
 }

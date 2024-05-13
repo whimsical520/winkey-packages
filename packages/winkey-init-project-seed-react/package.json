@@ -42,5 +42,5 @@
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
   },
-  "gitHead": "8a4234b4366ae29e3cf7e3f57d4a818b0d4fe46e"
+  "gitHead": "315f18340ef7a8870cd23c88ac1e111e1c0c5cfd"
 }
