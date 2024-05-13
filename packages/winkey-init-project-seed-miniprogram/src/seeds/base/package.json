@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev": "winkey dev",
     "eslint": "eslint --ext=jsx,ts,tsx ./",
     "prettier": "prettier --write ./src/**"
   },
@@ -30,5 +31,6 @@
   "devDependencies": {
     "eslint": "^9.2.0",
     "prettier": "^3.2.5"
-  }
+  },
+  "winkeyWorkFlow": "miniprogram"
 }

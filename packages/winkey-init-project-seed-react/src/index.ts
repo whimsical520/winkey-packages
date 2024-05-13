@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { runCMD, runSpawn, openBrowser } from 'winkey-os'
 import { lang } from './lang'
 import { readFilePaths, dataRender } from './tools'
-
-const inquirer = require('inquirer')
-const chalk = require('chalk')
-const path = require('path')
-const fs = require('fs')
+import inquirer from 'inquirer'
+import path from 'path'
+import chalk from 'chalk'
+import fs from 'fs'
 
 const SEED_PATH = path.join(__dirname, './seeds')
 const COMMON_PATH = path.join(SEED_PATH, '_commons')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const COMMON_PKG = require(path.join(COMMON_PATH, 'package.json'))
 
 let initData = {
@@ -42,6 +44,7 @@ const config = {
       const types = fs
         .readdirSync(path.join(__dirname, './seeds/'))
         .filter((name: string) => {
+          // eslint-disable-next-line no-useless-escape
           return !name.match(/^\.|\_/)
         })
         .filter((name: string) => {

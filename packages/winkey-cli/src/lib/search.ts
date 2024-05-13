@@ -34,20 +34,13 @@ export async function listSeed() {
   let winkeySeeds: string[] = []
 
   try {
-    const result = await searchWinkeyNpm('winkey-init-project-')
+    const result = await searchWinkeyNpm('winkey-init-project')
 
     // 兜底接口挂了，就用默认配置了
     if (!result.length) {
       winkeySeeds = ['winkey-init-project-seed-react']
     } else {
-      // if (obj?.map) {
-      //   winkeySeeds = {}
-      //   result.forEach((item) => {
-      //     winkeySeeds[item.name] = item
-      //   })
-      // } else {
       winkeySeeds = result.map((item) => item.name)
-      // }
     }
     return winkeySeeds
   } catch (err) {

@@ -5,6 +5,7 @@
 
 import * as commander from 'commander'
 import task from './task'
+import lang from './lang'
 
 const { program } = commander
 
@@ -12,7 +13,7 @@ const { program } = commander
 program.command('init').action(task.initAction)
 
 /** 运行 */
-program.command('dev').action(task.devAction)
+program.command('dev').option('-t, --target <key>', lang.DEV.MINIPROGRAM_TARGET).option('--platform <platform>', lang.DEV.MINIPROGRAM_PLATFORM).action(task.devAction)
 
 /** 打包 */
 program.command('build').action(task.buildAction)

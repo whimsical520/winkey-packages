@@ -1,5 +1,6 @@
-const path = require('path')
-const fs = require('fs')
+/* eslint-disable @typescript-eslint/ban-types */
+import path from 'path'
+import fs from 'fs'
 
 const fn = {
   type: function (obj: any) {

@@ -50,5 +50,9 @@ export default {
     DEV: 'winkey dev || winkey dev xxx (项目所在位置) 本地运行项目',
     LISTSEEDS: 'winkey list -s || winkey list --seeds 查看所有seeds包',
     UPDATESEEDS: 'winkey update 更新seeds包'
+  },
+  DEV: {
+    MINIPROGRAM_TARGET: '小程序目标 APPID',
+    MINIPROGRAM_PLATFORM: '小程序平台'
   }
 }

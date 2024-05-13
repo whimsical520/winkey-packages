@@ -8,7 +8,6 @@ Component({
   },
   lifetimes: {
     attached() {
-      console.log('2131322566')
       this.setData({
         logs: (wx.getStorageSync('logs') || []).map((log: string) => {
           return {

@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import json from '@rollup/plugin-json'
 import del from 'rollup-plugin-delete'
+import pkg from './package.json'
 
 export default [
   {
@@ -12,6 +13,7 @@ export default [
       format: 'cjs',
       entryFileNames: '[name].cjs.js'
     },
+    external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
     plugins: [
       del({
         targets: ['dist/**/*']

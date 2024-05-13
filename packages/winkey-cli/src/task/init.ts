@@ -123,7 +123,7 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
 
     config = await localConfig.get()
   }
-  console.log('config:', config)
+
   const iSeedPack = require((config as SeedDataStruct).seedMap[seedInfo.name].main)
 
   // 启动前 hooks
@@ -138,7 +138,7 @@ export const initAction = async (_: any, cmder: ActionSturct) => {
       })
     logger(LogType.Info, lang.INIT.HOOKS_BEFORE_START_FINISHED)
   }
-  console.log('iSeedPack:', iSeedPack)
+
   // 准备需要复制的文件
   if (!iSeedPack.path) {
     logger(LogType.Error, lang.INIT.SEED_COPY_PATH_UNDEFINED)

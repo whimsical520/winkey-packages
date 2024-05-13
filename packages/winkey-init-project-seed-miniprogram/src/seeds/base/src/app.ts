@@ -4,7 +4,6 @@ import type { IAppOption } from './models/base'
 App<IAppOption>({
   globalData: {},
   onLaunch() {
-    console.log('??2132??2322')
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

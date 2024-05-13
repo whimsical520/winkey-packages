@@ -7,7 +7,8 @@ import { cwd } from '../lib/consts'
 
 export const devAction = async (_, cmder: ActionSturct) => {
   let targetPath = cwd
-
+  console.log('cmder:', cmder.args)
+  console.log('_:', _)
   if (cmder.args && cmder.args[0]) {
     targetPath = path.resolve(targetPath, cmder.args[0])
   }
@@ -25,5 +26,8 @@ export const devAction = async (_, cmder: ActionSturct) => {
       targetPath: targetPath,
       type: 'inherit'
     })
+  } else if (pkg.winkeyWorkFlow === 'miniprogram') {
+    console.log('小程序的')
+    
   }
 }
