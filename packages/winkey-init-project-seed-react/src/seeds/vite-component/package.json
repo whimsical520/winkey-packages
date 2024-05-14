@@ -50,8 +50,5 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@vitejs/plugin-react": "1.3.2"
-  },
   "winkeyWorkFlow": "vite"
 }

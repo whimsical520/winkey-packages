@@ -2681,10 +2681,6 @@ delegates@^1.0.0:
   resolved "https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz"
   integrity sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==
 
-"demo@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
-  version "2.0.12"
-  resolved "file:packages/winkey-init-config-miniprogram"
-
 deprecation@^2.0.0:
   version "2.3.1"
   resolved "https://registry.npmjs.org/deprecation/-/deprecation-2.3.1.tgz"
@@ -6588,17 +6584,21 @@ wide-align@^1.1.5:
     string-width "^1.0.2 || 2 || 3 || 4"
 
 "winkey-cli@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-cli":
-  version "2.0.12"
+  version "2.0.13"
   resolved "file:packages/winkey-cli"
   dependencies:
     axios "^1.6.8"
     commander "^12.0.0"
     ts-node "^10.9.2"
-    winkey-log "^2.0.11"
-    winkey-os "^2.0.11"
+    winkey-log "^2.0.12"
+    winkey-os "^2.0.12"
+
+"winkey-init-config-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
+  version "2.0.13"
+  resolved "file:packages/winkey-init-config-miniprogram"
 
 "winkey-init-config-vite@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-vite":
-  version "2.0.12"
+  version "2.0.13"
   resolved "file:packages/winkey-init-config-vite"
   dependencies:
     "@vitejs/plugin-legacy" "1.8.2"
@@ -6611,11 +6611,11 @@ wide-align@^1.1.5:
     vite-tsconfig-paths "3.5.2"
 
 "winkey-init-project-seed-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-miniprogram":
-  version "2.0.12"
+  version "2.0.13"
   resolved "file:packages/winkey-init-project-seed-miniprogram"
 
 "winkey-init-project-seed-npm@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-npm":
-  version "2.0.12"
+  version "2.0.13"
   resolved "file:packages/winkey-init-project-seed-npm"
   dependencies:
     "@rollup/plugin-json" "6.1.0"
@@ -6625,15 +6625,15 @@ wide-align@^1.1.5:
     rollup-plugin-typescript2 "0.34.1"
 
 "winkey-init-project-seed-react@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-react":
-  version "2.0.12"
+  version "2.0.13"
   resolved "file:packages/winkey-init-project-seed-react"
 
-winkey-log@^2.0.12, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
-  version "2.0.12"
+winkey-log@^2.0.13, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
+  version "2.0.13"
   resolved "file:packages/winkey-log"
 
-winkey-os@^2.0.12, "winkey-os@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-os":
-  version "2.0.12"
+winkey-os@^2.0.13, "winkey-os@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-os":
+  version "2.0.13"
   resolved "file:packages/winkey-os"
 
 word-wrap@^1.2.5:
