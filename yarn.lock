@@ -6590,8 +6590,8 @@ wide-align@^1.1.5:
     axios "^1.6.8"
     commander "^12.0.0"
     ts-node "^10.9.2"
-    winkey-log "^2.0.12"
-    winkey-os "^2.0.12"
+    winkey-log "^2.0.13"
+    winkey-os "^2.0.13"
 
 "winkey-init-config-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
   version "2.0.13"
@@ -6625,7 +6625,7 @@ wide-align@^1.1.5:
     rollup-plugin-typescript2 "0.34.1"
 
 "winkey-init-project-seed-react@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-react":
-  version "2.0.13"
+  version "2.0.14"
   resolved "file:packages/winkey-init-project-seed-react"
 
 winkey-log@^2.0.13, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
