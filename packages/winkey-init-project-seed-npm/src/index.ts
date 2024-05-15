@@ -91,7 +91,7 @@ const config = {
       let initCmd = ''
       if (initData.yarn) {
         try {
-          const version = await runCMD({
+          const version: any = await runCMD({
             cmd: 'yarn -v',
             targetPath: process.cwd(),
             logger

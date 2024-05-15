@@ -48,7 +48,8 @@
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-typescript2": "0.34.1"
+    "rollup-plugin-typescript2": "0.34.1",
+    "winkey-os": "^2.0.13"
   },
   "gitHead": "315f18340ef7a8870cd23c88ac1e111e1c0c5cfd"
 }
