@@ -102,6 +102,11 @@ class LogSpinner {
     })
   }
 
+  stopSpinner() {
+    clearInterval(this.timer)
+    this.spinner.stop()
+  }
+
   finishSpinner(text?: string, status?: number) {
     if (status) {
       this.failSpinner(text || 'sorry~失败')

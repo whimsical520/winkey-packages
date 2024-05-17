@@ -26,7 +26,9 @@ export enum LogType {
   /** 删除 */
   Delete = 'delete',
   /** 完成 */
-  Finish = 'finsh'
+  Finish = 'finsh',
+  /** 暂停 */
+  Stop = 'stop'
 }
 
 const logSpinner = new LogSpinner()
@@ -71,6 +73,9 @@ export const logger = (type: LogType, text: string) => {
       break
     case LogType.Finish:
       logSpinner.finishSpinner(text)
+      break
+    case LogType.Stop:
+      logSpinner.stopSpinner()
       break
     default:
       logSpinner.infoSpinner(text)

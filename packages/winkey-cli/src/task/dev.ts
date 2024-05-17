@@ -1,14 +1,13 @@
 import path from 'path'
 import fs from 'fs'
 import { runSpawn } from 'winkey-os'
+import { initWinkeyConfig, ExecType } from 'winkey-init-config-miniprogram'
 import { logger, LogType } from 'winkey-log'
 import { ActionSturct } from '../model/action'
-import { cwd } from '../lib/consts'
+import { cwd, WinkeyWorkFlow } from '../lib/consts'
 
 export const devAction = async (_, cmder: ActionSturct) => {
   let targetPath = cwd
-  console.log('cmder:', cmder.args)
-  console.log('_:', _)
   if (cmder.args && cmder.args[0]) {
     targetPath = path.resolve(targetPath, cmder.args[0])
   }
@@ -20,14 +19,13 @@ export const devAction = async (_, cmder: ActionSturct) => {
 
   const pkg = require(path.resolve(targetPath, 'package.json'))
 
-  if (pkg.winkeyWorkFlow === 'vite') {
+  if (pkg.winkeyWorkFlow === WinkeyWorkFlow.Vite) {
     runSpawn({
       cmd: 'vite --config ./winkey.config.ts',
       targetPath: targetPath,
       type: 'inherit'
     })
-  } else if (pkg.winkeyWorkFlow === 'miniprogram') {
-    console.log('小程序的')
-    
+  } else if (pkg.winkeyWorkFlow === WinkeyWorkFlow.Miniprogram) {
+    initWinkeyConfig(ExecType.Dev)
   }
 }

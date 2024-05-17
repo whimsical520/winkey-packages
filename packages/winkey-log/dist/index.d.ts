@@ -24,6 +24,8 @@ export declare enum LogType {
     /** 删除 */
     Delete = "delete",
     /** 完成 */
-    Finish = "finsh"
+    Finish = "finsh",
+    /** 暂停 */
+    Stop = "stop"
 }
 export declare const logger: (type: LogType, text: string) => void;

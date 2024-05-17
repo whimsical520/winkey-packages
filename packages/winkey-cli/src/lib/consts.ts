@@ -27,3 +27,9 @@ export const CONFIG_PATH = path.join(USERPROFILE, '.init-project')
 
 /** 插件目录 */
 export const CONFIG_PLUGIN_PATH = path.join(CONFIG_PATH, 'plugins')
+
+/** 环境常量 */
+export enum WinkeyWorkFlow {
+  Vite = 'vite',
+  Miniprogram = 'miniprogram'
+}

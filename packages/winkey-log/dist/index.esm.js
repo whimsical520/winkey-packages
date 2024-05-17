@@ -1978,6 +1978,10 @@ class LogSpinner {
             text: text || '删除'
         });
     }
+    stopSpinner() {
+        clearInterval(this.timer);
+        this.spinner.stop();
+    }
     finishSpinner(text, status) {
         if (status) {
             this.failSpinner(text || 'sorry~失败');
@@ -2021,6 +2025,8 @@ var LogType;
     LogType["Delete"] = "delete";
     /** 完成 */
     LogType["Finish"] = "finsh";
+    /** 暂停 */
+    LogType["Stop"] = "stop";
 })(LogType || (LogType = {}));
 const logSpinner = new LogSpinner();
 const logger = (type, text) => {
@@ -2063,6 +2069,9 @@ const logger = (type, text) => {
             break;
         case LogType.Finish:
             logSpinner.finishSpinner(text);
+            break;
+        case LogType.Stop:
+            logSpinner.stopSpinner();
             break;
         default:
             logSpinner.infoSpinner(text);

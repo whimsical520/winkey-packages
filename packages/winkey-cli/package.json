@@ -32,7 +32,7 @@
   },
   "scripts": {
     "clear": "rimraf dist",
-    "build": "npm run clear && tsc --build ./tsconfig.json",
+    "build": "npm run clear && tsc",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -44,6 +44,7 @@
     "chalk": "2.4.2",
     "commander": "^12.0.0",
     "ts-node": "^10.9.2",
+    "winkey-init-config-miniprogram": "^2.0.17",
     "winkey-log": "^2.0.18",
     "winkey-os": "^2.0.13"
   },

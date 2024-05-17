@@ -15,6 +15,7 @@ declare class LogSpinner {
     tipSpinner(text?: string): void;
     correctSpinner(text?: string): void;
     deleteSpinner(text?: string): void;
+    stopSpinner(): void;
     finishSpinner(text?: string, status?: number): void;
 }
 export default LogSpinner;
