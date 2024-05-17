@@ -1,6 +1,5 @@
 import { logger, LogType } from 'winkey-log'
 import fs from 'fs'
-import path from 'path'
 import { runSpawn } from 'winkey-os'
 import lang from '../lang'
 import LocalConfig from '../lib/localConfig'

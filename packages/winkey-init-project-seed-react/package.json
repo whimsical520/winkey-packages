@@ -44,6 +44,7 @@
   },
   "gitHead": "315f18340ef7a8870cd23c88ac1e111e1c0c5cfd",
   "dependencies": {
+    "@types/node": "^20.12.12",
     "chalk": "2.4.2",
     "winkey-os": "^2.0.13"
   }

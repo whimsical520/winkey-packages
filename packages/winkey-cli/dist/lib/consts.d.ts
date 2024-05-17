@@ -9,3 +9,8 @@ export declare const USERPROFILE: string;
 export declare const CONFIG_PATH: string;
 /** 插件目录 */
 export declare const CONFIG_PLUGIN_PATH: string;
+/** 环境常量 */
+export declare enum WinkeyWorkFlow {
+    Vite = "vite",
+    Miniprogram = "miniprogram"
+}

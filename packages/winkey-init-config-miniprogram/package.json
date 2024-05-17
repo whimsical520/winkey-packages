@@ -46,11 +46,13 @@
     "url": "https://github.com/whimsical520/winkey-packages/issues"
   },
   "dependencies": {
+    "@types/node": "^20.12.12",
     "chokidar": "^3.6.0",
     "esbuild": "0.17.0",
     "esbuild-plugin-less": "1.2.0",
     "inquirer": "8.2.4",
     "moment": "^2.30.1",
     "winkey-log": "^2.0.19"
-  }
+  },
+  "gitHead": "4e9fdb38d28195c7426cfef6f593a66705953f67"
 }

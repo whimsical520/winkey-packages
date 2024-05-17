@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+     //为 true时跳过对声明文件（.d.ts）的检查。声明文件通常是用来描述第三方库或模块的类型信息
+    "skipLibCheck": true, 
     "declaration": true, // 生成 .d.ts 声明文件
     "esModuleInterop": true, // // 提供两个helper函数__importStar和__importDefault,通过为导入内容创建命名空间，实现CommonJS和ES模块之间的互操作性
     "lib": ["es2015"], // 最新的 es 语法提示，同时不引入 dom 相关的定义文件
@@ -12,7 +14,7 @@
   },
   // 只编译 src 目录下的文件
   "include": ["src"],
-  "exclude": ["node_modules", "dist"],
+  "exclude": ["node_modules", "dist", "test"],
   "ts-node": {
     "esm": true
   }
