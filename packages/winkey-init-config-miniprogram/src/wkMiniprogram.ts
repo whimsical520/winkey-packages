@@ -126,7 +126,7 @@ class WkMiniProgram {
       logger(LogType.Success, "转换成功");
 
       if (type === ExecType.Dev) {
-        const watcher = chokidar.watch(path.join(__dirname, "src"), {
+        const watcher = chokidar.watch(path.join(this.rootPath, "src"), {
           ignored: /(^|[/\\])\../, // 忽略以点开头的文件和文件夹
           persistent: true, // 持续监听
           ignoreInitial: true, // 忽略初始化时的事件
@@ -135,8 +135,7 @@ class WkMiniProgram {
 
         watcher.on("all", (event, filepath) => {
           const outputPath = path.join(
-            __dirname,
-            "output",
+            this.baseOutputPath,
             filepath.split("src")[1],
           );
           switch (event) {
