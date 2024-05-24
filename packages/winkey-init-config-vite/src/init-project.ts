@@ -36,6 +36,11 @@ export const initProject = (
         srcRoot: string;
       }
     ).srcRoot || "./src/";
+
+  const customBuild =
+    localConfig?.build?.custom === undefined
+      ? true
+      : localConfig?.build?.custom;
   /** 输出目录 */
   const OUTDIR_PATH = localConfig?.outDir || "./dist/";
 
@@ -59,30 +64,38 @@ export const initProject = (
           ...(localConfig?.build?.rollupOptions?.external || []),
         ],
         output: {
-          entryFileNames: BASE_PROJECT_PATH + "js/[name]-[hash].js",
-          assetFileNames: (val: any) => {
-            const works: string[] | undefined = val.name?.split(".");
+          entryFileNames: customBuild
+            ? BASE_PROJECT_PATH + "js/[name]-[hash].js"
+            : null,
+          assetFileNames: customBuild
+            ? (val: any) => {
+                const works: string[] | undefined = val.name?.split(".");
 
-            if (works) {
-              const type = works[works.length - 1];
+                if (works) {
+                  const type = works[works.length - 1];
 
-              if (type === "css") {
-                return BASE_PROJECT_PATH + CSS_PATH + "/[name]-[hash].[ext]";
+                  if (type === "css") {
+                    return (
+                      BASE_PROJECT_PATH + CSS_PATH + "/[name]-[hash].[ext]"
+                    );
+                  }
+
+                  if (type === "js") {
+                    return BASE_PROJECT_PATH + JS_PATH + "/[name]-[hash].[ext]";
+                  }
+
+                  if (IMAGES_REGEXP.includes(type)) {
+                    return (
+                      BASE_PROJECT_PATH + IMG_PATH + "/[name]-[hash].[ext]"
+                    );
+                  }
+                }
+
+                const ext = "assets";
+
+                return BASE_PROJECT_PATH + ext + "/[name]-[hash].[ext]";
               }
-
-              if (type === "js") {
-                return BASE_PROJECT_PATH + JS_PATH + "/[name]-[hash].[ext]";
-              }
-
-              if (IMAGES_REGEXP.includes(type)) {
-                return BASE_PROJECT_PATH + IMG_PATH + "/[name]-[hash].[ext]";
-              }
-            }
-
-            const ext = "assets";
-
-            return BASE_PROJECT_PATH + ext + "/[name]-[hash].[ext]";
-          },
+            : null,
           globals: {
             react: "react",
             "react-dom": "react-dom",
@@ -146,12 +159,13 @@ export const initProject = (
       eslintPlugin({
         include: ["src/**/*.ts", "src/**/*.tsx", "src/*.ts", "src/*.tsx"],
       }),
-      modifyDistPath({
-        root: OUTDIR_PATH + BASE_PROJECT_PATH,
-        outDir: OUTDIR_PATH,
-        html: HTML_PATH,
-        assets: "/assets",
-      }),
+      customBuild &&
+        modifyDistPath({
+          root: OUTDIR_PATH + BASE_PROJECT_PATH,
+          outDir: OUTDIR_PATH,
+          html: HTML_PATH,
+          assets: "/assets",
+        }),
       react({
         babel: {
           plugins: [

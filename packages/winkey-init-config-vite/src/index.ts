@@ -43,6 +43,7 @@ export interface WinkeyProjectConfig {
   };
   /** build配置 */
   build?: {
+    custom?: boolean;
     rollupOptions?: {
       external?: string[];
     };
