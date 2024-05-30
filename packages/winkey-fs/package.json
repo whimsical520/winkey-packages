@@ -1,11 +1,11 @@
 {
-  "name": "winkey-init-project-seed-miniprogram",
-  "version": "2.0.24",
+  "name": "winkey-fs",
+  "version": "1.0.0",
   "main": "./dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "author": "Ricardom520 <1781218530@qq.com>",
-  "homepage": "https://github.com/whimsical520/winkey-packages#readme",
+  "repository": "xxx",
+  "author": "xxx",
   "license": "MIT",
   "files": [
     "dist"
@@ -32,11 +32,5 @@
     "rollup": "2.78.0",
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
-  },
-  "gitHead": "4e9fdb38d28195c7426cfef6f593a66705953f67",
-  "dependencies": {
-    "@types/node": "^20.12.12",
-    "chalk": "2.4.2",
-    "winkey-os": "^2.0.20"
   }
 }

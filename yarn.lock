@@ -1591,23 +1591,6 @@
   resolved "https://registry.npmjs.org/@types/semver/-/semver-7.5.8.tgz"
   integrity sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==
 
-"@typescript-eslint/eslint-plugin@6.21.0":
-  version "6.21.0"
-  resolved "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.21.0.tgz"
-  integrity sha512-oy9+hTPCUFpngkEZUSzbf9MxI65wbKFoQYsgPdILTfbUldp5ovUuphZVe4i30emU9M/kP+T64Di0mxl7dSw3MA==
-  dependencies:
-    "@eslint-community/regexpp" "^4.5.1"
-    "@typescript-eslint/scope-manager" "6.21.0"
-    "@typescript-eslint/type-utils" "6.21.0"
-    "@typescript-eslint/utils" "6.21.0"
-    "@typescript-eslint/visitor-keys" "6.21.0"
-    debug "^4.3.4"
-    graphemer "^1.4.0"
-    ignore "^5.2.4"
-    natural-compare "^1.4.0"
-    semver "^7.5.4"
-    ts-api-utils "^1.0.1"
-
 "@typescript-eslint/eslint-plugin@6.5.0":
   version "6.5.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.5.0.tgz"
@@ -1634,17 +1617,6 @@
     "@typescript-eslint/types" "6.5.0"
     "@typescript-eslint/typescript-estree" "6.5.0"
     "@typescript-eslint/visitor-keys" "6.5.0"
-    debug "^4.3.4"
-
-"@typescript-eslint/parser@6.21.0":
-  version "6.21.0"
-  resolved "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-6.21.0.tgz"
-  integrity sha512-tbsV1jPne5CkFQCgPBcDOt30ItF7aJoZL997JSF7MhGQqOeT3svWRYxiqlfA5RUdlHN6Fi+EI9bxqbdyAUZjYQ==
-  dependencies:
-    "@typescript-eslint/scope-manager" "6.21.0"
-    "@typescript-eslint/types" "6.21.0"
-    "@typescript-eslint/typescript-estree" "6.21.0"
-    "@typescript-eslint/visitor-keys" "6.21.0"
     debug "^4.3.4"
 
 "@typescript-eslint/scope-manager@6.21.0":
@@ -6812,20 +6784,26 @@ wide-align@^1.1.5:
     chalk "2.4.2"
     commander "^12.0.0"
     ts-node "^10.9.2"
-    winkey-init-config-miniprogram "^2.0.23"
+    winkey-init-config-miniprogram "^2.0.24"
     winkey-log "^2.0.20"
     winkey-os "^2.0.20"
+
+winkey-fs@^1.0.0, "winkey-fs@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-fs":
+  version "1.0.0"
+  resolved "file:packages/winkey-fs"
 
 winkey-init-config-miniprogram@^2.0.24, "winkey-init-config-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
   version "2.0.24"
   resolved "file:packages/winkey-init-config-miniprogram"
   dependencies:
     "@types/node" "^20.12.12"
+    chalk "2.4.2"
     chokidar "^3.6.0"
     esbuild "0.17.0"
     esbuild-plugin-less "1.2.0"
     inquirer "8.2.4"
     moment "^2.30.1"
+    winkey-fs "^1.0.0"
     winkey-log "^2.0.20"
 
 "winkey-init-config-vite@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-vite":
