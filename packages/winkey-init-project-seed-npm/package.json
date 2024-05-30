@@ -1,6 +1,6 @@
 {
   "name": "winkey-init-project-seed-npm",
-  "version": "2.0.20",
+  "version": "2.0.25",
   "main": "./dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -50,7 +50,7 @@
     "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-typescript2": "0.34.1",
-    "winkey-os": "^2.0.20"
+    "winkey-os": "^2.0.25"
   },
   "gitHead": "315f18340ef7a8870cd23c88ac1e111e1c0c5cfd"
 }

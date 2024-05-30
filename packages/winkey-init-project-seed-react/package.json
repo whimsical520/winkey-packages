@@ -1,6 +1,6 @@
 {
   "name": "winkey-init-project-seed-react",
-  "version": "2.0.20",
+  "version": "2.0.25",
   "main": "./dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -46,6 +46,6 @@
   "dependencies": {
     "@types/node": "^20.12.12",
     "chalk": "2.4.2",
-    "winkey-os": "^2.0.20"
+    "winkey-os": "^2.0.25"
   }
 }
