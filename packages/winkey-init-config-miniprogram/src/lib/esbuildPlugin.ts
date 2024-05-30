@@ -15,7 +15,7 @@ export const esbuildPlugin = (params) => {
       const fileRegex = new RegExp(`\\.${fileType}$`)
 
       build.onLoad({ filter: fileRegex }, async (args) => {
-        let contents: string = fs.readFileSync(args.path).toString();
+        let contents: string = fs.readFileSync(args.path).toString()
 
         if (params.from !== params.platform) {
           const regex = new RegExp(`${params.from}`, 'gi')
@@ -23,13 +23,13 @@ export const esbuildPlugin = (params) => {
         }
 
         if (params.env) {
-          Object.keys(params.env).forEach(i => {
+          Object.keys(params.env).forEach((i) => {
             const regex = new RegExp(`${i}`, 'gi')
             contents = contents.replace(regex, `'${params.env[i]}'`)
           })
         }
 
-        return { contents: contents, loader: loaderMap[fileType] };
+        return { contents: contents, loader: loaderMap[fileType] }
       })
     }
   }

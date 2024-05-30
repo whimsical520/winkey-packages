@@ -6776,7 +6776,7 @@ wide-align@^1.1.5:
     string-width "^1.0.2 || 2 || 3 || 4"
 
 "winkey-cli@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-cli":
-  version "2.0.24"
+  version "2.0.25"
   resolved "file:packages/winkey-cli"
   dependencies:
     "@types/node" "^20.12.12"
@@ -6788,12 +6788,12 @@ wide-align@^1.1.5:
     winkey-log "^2.0.20"
     winkey-os "^2.0.20"
 
-winkey-fs@^1.0.0, "winkey-fs@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-fs":
-  version "1.0.0"
+winkey-fs@^2.0.25, "winkey-fs@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-fs":
+  version "2.0.25"
   resolved "file:packages/winkey-fs"
 
-winkey-init-config-miniprogram@^2.0.24, "winkey-init-config-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
-  version "2.0.24"
+winkey-init-config-miniprogram@^2.0.25, "winkey-init-config-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
+  version "2.0.25"
   resolved "file:packages/winkey-init-config-miniprogram"
   dependencies:
     "@types/node" "^20.12.12"
@@ -6803,11 +6803,11 @@ winkey-init-config-miniprogram@^2.0.24, "winkey-init-config-miniprogram@file:E:\
     esbuild-plugin-less "1.2.0"
     inquirer "8.2.4"
     moment "^2.30.1"
-    winkey-fs "^1.0.0"
-    winkey-log "^2.0.20"
+    winkey-fs "^2.0.25"
+    winkey-log "^2.0.25"
 
 "winkey-init-config-vite@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-vite":
-  version "2.0.24"
+  version "2.0.25"
   resolved "file:packages/winkey-init-config-vite"
   dependencies:
     "@types/node" "^20.12.12"
@@ -6821,7 +6821,7 @@ winkey-init-config-miniprogram@^2.0.24, "winkey-init-config-miniprogram@file:E:\
     vite-tsconfig-paths "3.5.2"
 
 "winkey-init-project-seed-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-miniprogram":
-  version "2.0.24"
+  version "2.0.25"
   resolved "file:packages/winkey-init-project-seed-miniprogram"
   dependencies:
     "@types/node" "^20.12.12"
@@ -6829,7 +6829,7 @@ winkey-init-config-miniprogram@^2.0.24, "winkey-init-config-miniprogram@file:E:\
     winkey-os "^2.0.20"
 
 "winkey-init-project-seed-npm@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-npm":
-  version "2.0.20"
+  version "2.0.25"
   resolved "file:packages/winkey-init-project-seed-npm"
   dependencies:
     "@rollup/plugin-json" "6.1.0"
@@ -6842,22 +6842,22 @@ winkey-init-config-miniprogram@^2.0.24, "winkey-init-config-miniprogram@file:E:\
     winkey-os "^2.0.20"
 
 "winkey-init-project-seed-react@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-react":
-  version "2.0.20"
+  version "2.0.25"
   resolved "file:packages/winkey-init-project-seed-react"
   dependencies:
     "@types/node" "^20.12.12"
     chalk "2.4.2"
     winkey-os "^2.0.20"
 
-winkey-log@^2.0.20, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
-  version "2.0.20"
+winkey-log@^2.0.25, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
+  version "2.0.25"
   resolved "file:packages/winkey-log"
   dependencies:
     "@types/node" "^20.12.12"
     chalk "2.4.2"
 
-winkey-os@^2.0.20, "winkey-os@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-os":
-  version "2.0.20"
+winkey-os@^2.0.25, "winkey-os@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-os":
+  version "2.0.25"
   resolved "file:packages/winkey-os"
   dependencies:
     "@types/node" "^20.12.12"

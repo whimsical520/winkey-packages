@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = winkeyFs;
 
 function winkeyFs() {
-    return "Hello from winkeyFs";
+  return "Hello from winkeyFs";
 }

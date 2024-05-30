@@ -142,11 +142,16 @@ class WkMiniProgram {
           bundle: true,
           sourcemap: false,
           charset: 'utf8',
-          plugins: index !== undefined ? [esbuildPlugin({
-            fileType: 'ts',
-            from : this.from,
-            ...this.compilerOptions[index]
-          })] : null
+          plugins:
+            index !== undefined
+              ? [
+                  esbuildPlugin({
+                    fileType: 'ts',
+                    from: this.from,
+                    ...this.compilerOptions[index]
+                  })
+                ]
+              : null
         })
         .catch((err) => {
           logger(LogType.Error, err)
@@ -195,10 +200,15 @@ class WkMiniProgram {
               `.${styleFileSuffixMap[index !== undefined ? this.compilerOptions[index].platform : 'wx']}`
           ),
           bundle: true,
-          plugins: [index !== undefined ? esbuildPlugin({
-            fileType: 'less',
-            ...this.compilerOptions[index],
-          }) : null, lessLoader()]
+          plugins: [
+            index !== undefined
+              ? esbuildPlugin({
+                  fileType: 'less',
+                  ...this.compilerOptions[index]
+                })
+              : null,
+            lessLoader()
+          ]
         })
         .catch((err) => {
           logger(LogType.Error, err)
@@ -214,7 +224,8 @@ class WkMiniProgram {
   }
 
   private getProjectJson(index?: number) {
-    const projectConfigPath = index !== undefined ? this.compilerOptions[index].projectConfigPath : 'project.config.json'
+    const projectConfigPath =
+      index !== undefined ? this.compilerOptions[index].projectConfigPath : 'project.config.json'
     const outputPath = index !== undefined ? this.compilerOptions[index].root : this.baseOutputPath
     // 默认取project.config.json
     if (fs.existsSync(projectConfigPath)) {
@@ -225,7 +236,11 @@ class WkMiniProgram {
       jsonResult.projectname = projectname || jsonResult.projectname
       jsonResult.appid = appid || jsonResult.appid
 
-      fs.writeFileSync(path.resolve(outputPath, 'project.config.json'), JSON.stringify(jsonResult, null, 2), 'utf-8')
+      fs.writeFileSync(
+        path.resolve(outputPath, 'project.config.json'),
+        JSON.stringify(jsonResult, null, 2),
+        'utf-8'
+      )
       return
     }
   }
