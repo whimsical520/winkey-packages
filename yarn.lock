@@ -6784,9 +6784,9 @@ wide-align@^1.1.5:
     chalk "2.4.2"
     commander "^12.0.0"
     ts-node "^10.9.2"
-    winkey-init-config-miniprogram "^2.0.24"
-    winkey-log "^2.0.20"
-    winkey-os "^2.0.20"
+    winkey-init-config-miniprogram "^2.0.25"
+    winkey-log "^2.0.25"
+    winkey-os "^2.0.25"
 
 winkey-fs@^2.0.25, "winkey-fs@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-fs":
   version "2.0.25"
@@ -6826,7 +6826,7 @@ winkey-init-config-miniprogram@^2.0.25, "winkey-init-config-miniprogram@file:E:\
   dependencies:
     "@types/node" "^20.12.12"
     chalk "2.4.2"
-    winkey-os "^2.0.20"
+    winkey-os "^2.0.25"
 
 "winkey-init-project-seed-npm@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-npm":
   version "2.0.25"
@@ -6839,7 +6839,7 @@ winkey-init-config-miniprogram@^2.0.25, "winkey-init-config-miniprogram@file:E:\
     rollup-plugin-copy "3.4.0"
     rollup-plugin-node-resolve "5.2.0"
     rollup-plugin-typescript2 "0.34.1"
-    winkey-os "^2.0.20"
+    winkey-os "^2.0.25"
 
 "winkey-init-project-seed-react@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-react":
   version "2.0.25"
@@ -6847,7 +6847,7 @@ winkey-init-config-miniprogram@^2.0.25, "winkey-init-config-miniprogram@file:E:\
   dependencies:
     "@types/node" "^20.12.12"
     chalk "2.4.2"
-    winkey-os "^2.0.20"
+    winkey-os "^2.0.25"
 
 winkey-log@^2.0.25, "winkey-log@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-log":
   version "2.0.25"

@@ -102,6 +102,8 @@ export interface WinkeyProjectConfig {
   css?: CSSOptions;
   /** 是否启动小助手 */
   winkeyTool?: boolean;
+  /** @name 是否是lib模板 默认component包，不含react，lib模式，会把react打包进去 */
+  lib?: boolean;
 }
 export interface ViteConfigStruct {
   mode: string;

@@ -58,11 +58,7 @@ export const initProject = (
       manifest: "rev-manifest.json",
       assetsInlineLimit: 4096,
       rollupOptions: {
-        external: [
-          "react",
-          "react-dom",
-          ...(localConfig?.build?.rollupOptions?.external || []),
-        ],
+        external: [...(localConfig?.build?.rollupOptions?.external || [])],
         output: {
           entryFileNames: customBuild
             ? BASE_PROJECT_PATH + "js/[name]-[hash].js"
