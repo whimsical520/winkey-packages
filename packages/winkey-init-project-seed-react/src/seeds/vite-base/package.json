@@ -45,6 +45,6 @@
     "react-router-dom": "^6.4.1",
     "sass": "^1.55.0",
     "scss": "^0.2.4",
-    "winkey-init-config-vite": "^1.1.17"
+    "winkey-init-config-vite": "latest"
   }
 }

@@ -6776,7 +6776,7 @@ wide-align@^1.1.5:
     string-width "^1.0.2 || 2 || 3 || 4"
 
 "winkey-cli@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-cli":
-  version "2.0.27"
+  version "2.0.28"
   resolved "file:packages/winkey-cli"
   dependencies:
     "@types/node" "^20.12.12"
@@ -6784,7 +6784,7 @@ wide-align@^1.1.5:
     chalk "2.4.2"
     commander "^12.0.0"
     ts-node "^10.9.2"
-    winkey-init-config-miniprogram "^2.0.26"
+    winkey-init-config-miniprogram "^2.0.27"
     winkey-log "^2.0.25"
     winkey-os "^2.0.25"
 
@@ -6792,8 +6792,8 @@ winkey-fs@^2.0.26, "winkey-fs@file:E:\\Ricardom\\项目\\winkey-packages\\packag
   version "2.0.26"
   resolved "file:packages/winkey-fs"
 
-winkey-init-config-miniprogram@^2.0.27, "winkey-init-config-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
-  version "2.0.27"
+winkey-init-config-miniprogram@^2.0.28, "winkey-init-config-miniprogram@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-miniprogram":
+  version "2.0.28"
   resolved "file:packages/winkey-init-config-miniprogram"
   dependencies:
     "@types/node" "^20.12.12"
@@ -6807,7 +6807,7 @@ winkey-init-config-miniprogram@^2.0.27, "winkey-init-config-miniprogram@file:E:\
     winkey-log "^2.0.25"
 
 "winkey-init-config-vite@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-vite":
-  version "2.0.26"
+  version "2.0.28"
   resolved "file:packages/winkey-init-config-vite"
   dependencies:
     "@types/node" "^20.12.12"

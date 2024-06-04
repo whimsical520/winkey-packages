@@ -11,7 +11,7 @@ export const devAction = async (args, cmder: ActionSturct) => {
   if (cmder.args && cmder.args[0]) {
     targetPath = path.resolve(targetPath, cmder.args[0])
   }
-  console.log('args:', args)
+
   if (!fs.existsSync(targetPath)) {
     logger(LogType.Error, '所选目录不存在')
     return

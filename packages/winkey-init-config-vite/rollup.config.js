@@ -2,28 +2,36 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
+import pkg from "./package.json";
 import del from "rollup-plugin-delete";
 
 export default [
   {
     input: "src/index.ts",
-    output: {
-      file: "dist/index.cjs.js",
-      format: "cjs",
-      entryFileNames: "[name].cjs.js",
-    },
+    output: [
+      {
+        file: "dist/index.cjs.js",
+        format: "cjs",
+        entryFileNames: "[name].cjs.js",
+      },
+    ],
     plugins: [
       del({
         targets: ["dist/**/*"],
       }),
-      nodeResolve(),
-      commonjs(),
+      nodeResolve({ mainFields: ["jsnext:main"] }),
+      commonjs({
+        exclude: "node_modules/**",
+      }),
       json(),
       typescript({
-        tsconfig: "./tsconfig.json",
+        typescript: require("typescript"),
       }),
     ],
-    // external: [...] // 外部引用的库，不要打包，用于处理 peerDependencies
+    external: [
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
+    ],
   },
   {
     input: "src/index.ts",
@@ -33,12 +41,18 @@ export default [
       entryFileNames: "[name].esm.js",
     },
     plugins: [
-      nodeResolve(),
-      commonjs(),
+      nodeResolve({ mainFields: ["jsnext:main"] }),
+      commonjs({
+        exclude: "node_modules/**",
+      }),
       json(),
       typescript({
-        tsconfig: "./tsconfig.json",
+        typescript: require("typescript"),
       }),
+    ],
+    external: [
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
     ],
   },
 ];
