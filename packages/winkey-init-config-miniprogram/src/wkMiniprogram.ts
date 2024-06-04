@@ -200,14 +200,16 @@ class WkMiniProgram {
               `.${styleFileSuffixMap[index !== undefined ? this.compilerOptions[index].platform : 'wx']}`
           ),
           bundle: true,
-          plugins: index !== undefined ? [
-            esbuildPlugin({
-                  fileType: 'less',
-                  ...this.compilerOptions[index]
-                })
-            ,
-            lessLoader()
-          ] : [lessLoader()]
+          plugins:
+            index !== undefined
+              ? [
+                  esbuildPlugin({
+                    fileType: 'less',
+                    ...this.compilerOptions[index]
+                  }),
+                  lessLoader()
+                ]
+              : [lessLoader()]
         })
         .catch((err) => {
           logger(LogType.Error, err)
