@@ -151,7 +151,7 @@ class WkMiniProgram {
                     ...this.compilerOptions[index]
                   })
                 ]
-              : null
+              : []
         })
         .catch((err) => {
           logger(LogType.Error, err)
@@ -200,15 +200,14 @@ class WkMiniProgram {
               `.${styleFileSuffixMap[index !== undefined ? this.compilerOptions[index].platform : 'wx']}`
           ),
           bundle: true,
-          plugins: [
-            index !== undefined
-              ? esbuildPlugin({
+          plugins: index !== undefined ? [
+            esbuildPlugin({
                   fileType: 'less',
                   ...this.compilerOptions[index]
                 })
-              : null,
+            ,
             lessLoader()
-          ]
+          ] : [lessLoader()]
         })
         .catch((err) => {
           logger(LogType.Error, err)

@@ -5,6 +5,11 @@ export interface FormatedEnv {
 /** 发布平台 */
 export type MiniWkAppPlatform = 'wx' | 'swan' | 'tt' | 'ks'
 
+export type CommandArgs = {
+  platform: MiniWkAppPlatform
+  target: string
+}
+
 export type WkMiniProgramCompilerOption = {
   /** 项目名称 */
   projectName: string
@@ -15,20 +20,20 @@ export type WkMiniProgramCompilerOption = {
   /** 唯一key */
   key: string
   /** 忽略的信息 */
-  ignores: string[]
+  ignores?: string[]
   /** 项目配置地址 */
-  projectConfigPath: string
+  projectConfigPath?: string
   /** 秘钥地址 */
-  privateKeyPath: string
+  privateKeyPath?: string
   /** 产出目录 */
-  root: string
-  alias: Object
+  root?: string
+  alias?: Object
   /** 环境配置 */
-  env: Record<string, string>
+  env?: Record<string, string>
   /** npm包忽略信息 */
-  npmIgnores: string[]
+  npmIgnores?: string[]
   /** 异步信息 */
-  syncResouce: Record<string, string>
+  syncResouce?: Record<string, string>
 }
 
 export type WkMiniProgramOptions = {
@@ -39,17 +44,19 @@ export type WkMiniProgramOptions = {
   /** @name 模板来源 */
   from: MiniWkAppPlatform
   /** @name 全局上下文 */
-  context: string
+  context?: string
   /** npm保持最新包 */
-  npmKeepLatest: string[]
+  npmKeepLatest?: string[]
   /** tsconfig路径 */
-  tsConfigPath: string
+  tsConfigPath?: string
   /** 有效目标 */
-  effectTargets: string[]
+  effectTargets?: string[]
   /** ??? */
-  preview: {
+  preview?: {
     list: unknown
   }
-  /** 单独配置信息 */
-  compilerOptions: WkMiniProgramCompilerOption[]
+  /** @name 单独配置信息 */
+  compilerOptions?: WkMiniProgramCompilerOption[]
+  /** @name 钩子方法 */
+  hooks?: unknown
 }

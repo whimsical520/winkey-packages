@@ -3,7 +3,7 @@ import chalk from 'chalk'
 import { logger, LogType } from 'winkey-log'
 import fs from 'fs'
 import wkFs from 'winkey-fs'
-import type { FormatedEnv, MiniWkAppPlatform } from '../types'
+import type { FormatedEnv, MiniWkAppPlatform, WkMiniProgramCompilerOption } from '../types'
 
 export function formatEnv(env?: string[]): FormatedEnv {
   const r: FormatedEnv = {}
@@ -28,7 +28,7 @@ export function formatEnv(env?: string[]): FormatedEnv {
 }
 
 export async function formatWkConfig(op) {
-  const { config, target, silent, platform } = op
+  const { config, target, silent, platform, args } = op
   const logPrefix = 'formatWkConfig'
   const cwd = process.cwd()
   const context = path.resolve(cwd, config.context || process.cwd())
@@ -132,7 +132,7 @@ export async function formatWkConfig(op) {
   let compilerOptions = config.compilerOptions || []
 
   // 过滤掉没有必要参数的配置
-  compilerOptions = compilerOptions.filter((opt, index) => {
+  compilerOptions = compilerOptions.filter((opt: WkMiniProgramCompilerOption, index) => {
     const missKey: string[] = []
     if (!opt.appid) {
       missKey.push('appid')
@@ -151,6 +151,16 @@ export async function formatWkConfig(op) {
         LogType.Warn,
         `${logPrefix} ${chalk.cyan(`compilerOptions[${index}]`)} 略过: 缺少以下配置项: ${missKey.join(', ')}`
       )
+      return false
+    } else if (args && Object.keys(args).length) {
+      if (args.platform && args.target) {
+        return opt.platform === args.platform && opt.appid === args.target
+      } else if (args.platform) {
+        return opt.platform === args.platform
+      } else if (args.target) {
+        return opt.appid === args.target
+      }
+
       return false
     } else {
       return true

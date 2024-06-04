@@ -2,10 +2,11 @@ import * as path from 'path'
 import * as fs from 'fs'
 import { runSpawn } from 'winkey-os'
 import { logger, LogType } from 'winkey-log'
+import { initWinkeyConfig, ExecType } from 'winkey-init-config-miniprogram'
 import { ActionSturct } from '../model/action'
-import { cwd } from '../lib/consts'
+import { cwd, WinkeyWorkFlow } from '../lib/consts'
 
-export const buildAction = async (_, cmder: ActionSturct) => {
+export const buildAction = async (args, cmder: ActionSturct) => {
   let targetPath = cwd
 
   if (cmder.args && cmder.args[0]) {
@@ -25,5 +26,7 @@ export const buildAction = async (_, cmder: ActionSturct) => {
       targetPath: targetPath,
       type: 'inherit'
     })
+  } else if (pkg.winkeyWorkFlow === WinkeyWorkFlow.Miniprogram) {
+    initWinkeyConfig(ExecType.Build, targetPath, args)
   }
 }

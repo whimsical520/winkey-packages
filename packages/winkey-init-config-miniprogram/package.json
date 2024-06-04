@@ -2,7 +2,6 @@
   "name": "winkey-init-config-miniprogram",
   "version": "2.0.26",
   "main": "./dist/index.cjs.js",
-  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "author": "Ricardom520 <1781218530@qq.com>",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
@@ -30,6 +29,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "prettier": "^3.2.5",
     "rollup": "2.78.0",
+    "rollup-plugin-copy": "3.4.0",
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
   },

@@ -4,6 +4,8 @@ import fs from 'fs'
 import { logger, LogType } from 'winkey-log'
 import esbuild from 'esbuild'
 import { formatWkConfig } from './lib/wkConfig'
+import type { CommandArgs } from './types/index'
+export type { MiniWkAppPlatform, WkMiniProgramOptions } from './types'
 
 export enum ExecType {
   /** 开发模式 */
@@ -12,9 +14,8 @@ export enum ExecType {
   Build = 'build'
 }
 
-export async function initWinkeyConfig(type: ExecType, context?: string) {
-  const [err, config] = await getWkConfig(context)
-
+export async function initWinkeyConfig(type: ExecType, context: string, args?: CommandArgs) {
+  const [err, config] = await getWkConfig(context, args)
   if (err) {
     return
   }
@@ -24,14 +25,15 @@ export async function initWinkeyConfig(type: ExecType, context?: string) {
   wkMiniProgram.init(type)
 }
 
-async function getWkConfig(context) {
+async function getWkConfig(context, args?: CommandArgs) {
   const cwd = process.cwd()
   const root = context ? path.resolve(cwd, context) : cwd
+
   const configTsPath = path.resolve(root, 'winkey.config.ts')
   const configJsPath = path.resolve(root, 'winkey.config.js')
   const pkgPath = path.join(root, 'package.json')
   if (fs.existsSync(configTsPath)) {
-    const outfile = path.join(root, '_bat.config.js')
+    const outfile = path.join(root, 'winkey.config.js')
     const pkg = require(pkgPath)
     const external = Object.keys(pkg.dependencies || {})
       .concat(Object.keys(pkg.devDependencies || {}))
@@ -54,7 +56,8 @@ async function getWkConfig(context) {
         config: {
           ...require(outfile).default,
           context: root
-        }
+        },
+        args
       })
 
       fs.unlinkSync(outfile)
