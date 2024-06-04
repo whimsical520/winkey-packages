@@ -1,6 +1,6 @@
 {
   "name": "winkey-init-config-miniprogram",
-  "version": "2.0.25",
+  "version": "2.0.26",
   "main": "./dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -62,7 +62,7 @@
     "esbuild-plugin-less": "1.2.0",
     "inquirer": "8.2.4",
     "moment": "^2.30.1",
-    "winkey-fs": "^2.0.25",
+    "winkey-fs": "^2.0.26",
     "winkey-log": "^2.0.25"
   },
   "gitHead": "4e9fdb38d28195c7426cfef6f593a66705953f67"
