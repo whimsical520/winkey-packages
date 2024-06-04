@@ -8,7 +8,7 @@
     "moduleResolution": "Node", // 能在 esm 项目中解析 cjs 模块
     "outDir": "./dist", // 编译后的文件存到到哪个目录
     "removeComments": false, // 编译删除注释，这里选择保留
-    "target": "es6" // 目标 ECMAScript 版本， Node v6之后就已经支持 es6 了
+    "target": "ES2015"
   },
   // 只编译 src 目录下的文件
   "include": ["src"],
