@@ -7125,7 +7125,7 @@ winkey-init-config-miniprogram@^2.0.28, "winkey-init-config-miniprogram@file:E:\
     winkey-os "^2.0.25"
 
 "winkey-init-project-seed-react@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-project-seed-react":
-  version "2.0.29"
+  version "2.0.32"
   resolved "file:packages/winkey-init-project-seed-react"
   dependencies:
     "@types/node" "^20.12.12"
