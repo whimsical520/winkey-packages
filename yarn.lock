@@ -7090,7 +7090,7 @@ winkey-init-config-miniprogram@^2.0.28, "winkey-init-config-miniprogram@file:E:\
     winkey-log "^2.0.25"
 
 "winkey-init-config-vite@file:E:\\Ricardom\\项目\\winkey-packages\\packages\\winkey-init-config-vite":
-  version "2.0.30"
+  version "2.0.31"
   resolved "file:packages/winkey-init-config-vite"
   dependencies:
     "@types/node" "^20.12.12"
