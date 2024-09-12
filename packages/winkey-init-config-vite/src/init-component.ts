@@ -34,6 +34,7 @@ export const initComponent = (
     // /** 存储缓存文件的目录。 */
     cacheDir: localConfig.cacheDir || "node_modules/.vite",
     clearScreen: localConfig.clearScreen || false,
+    assetsInclude: localConfig.assetsInclude,
     /** 出口文件 */
     build: {
       lib: {

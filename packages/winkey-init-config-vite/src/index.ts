@@ -48,6 +48,8 @@ export interface WinkeyProjectConfig {
       external?: string[];
     };
   };
+  /** 静态资源处理 */
+  assetsInclude?: string | RegExp | (string | RegExp)[];
   /** alias 配置 */
   alias?:
     | {
