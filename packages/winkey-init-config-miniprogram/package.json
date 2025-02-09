@@ -1,6 +1,6 @@
 {
   "name": "winkey-init-config-miniprogram",
-  "version": "2.0.28",
+  "version": "2.0.29",
   "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",
   "author": "Ricardom520 <1781218530@qq.com>",
