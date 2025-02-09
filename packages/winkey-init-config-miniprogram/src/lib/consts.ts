@@ -4,3 +4,10 @@ export const styleFileSuffixMap: Record<string, string> = {
   swan: 'css',
   tt: 'ttss'
 }
+
+/** api前缀 */
+export const apiPrefixMap: Record<string, string> = {
+  wx: 'wx',
+  swan: 'swan',
+  tt: 'tt'
+}

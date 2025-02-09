@@ -181,7 +181,7 @@ export async function formatWkConfig(op) {
   const nextCompilerOptions = compilerOptions.map((opt) => {
     const projectName = opt.projectName
     const appid = opt.appid
-    const platform = opt.platform
+    const platform = opt.platform 
     const key = opt.key
     const ignores = opt.ignores || []
     const projectConfigPath = opt.projectConfigPath
@@ -189,7 +189,8 @@ export async function formatWkConfig(op) {
       : pjConfigPathMap[platform]
     const privateKeyPath = opt.privateKeyPath ? path.resolve(context, opt.privateKeyPath) : ''
     const alias = opt.alias || {}
-    const pjRoot = path.resolve(output, `${platform}-${key}`)
+
+    const pjRoot = path.resolve(path.join(context, output), `${platform}-${key}`)
     const env = opt.env || {}
     const npmIgnores = opt.npmIgnores || []
     const syncResouce = opt.syncResouce || {}

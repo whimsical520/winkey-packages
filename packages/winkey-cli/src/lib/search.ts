@@ -29,23 +29,28 @@ async function searchWinkeyNpm(key: string) {
   }
 }
 
+
 /** 返回seed包 */
 export async function listSeed() {
-  let winkeySeeds: string[] = []
+  let winkeySeeds: string[] = ['winkey-init-project-seed-react', 'winkey-init-project-seed-npm', 'winkey-init-project-seed-miniprogram']
 
-  try {
-    const result = await searchWinkeyNpm('winkey-init-project-')
-
-    // 兜底接口挂了，就用默认配置了
-    if (!result.length) {
-      winkeySeeds = ['winkey-init-project-seed-react']
-    } else {
-      winkeySeeds = result.map((item) => item.name)
-    }
-    return winkeySeeds
-  } catch (err) {
-    logger(LogType.Error, `seeds 包返回错误: ${err}`)
-  }
+  // try {
+  //   const result = await searchWinkeyNpm('winkey-init-project')
+  //   console.log('result:', result)
+  //   // 兜底接口挂了，就用默认配置了
+  //   if (!result.length) {
+  //     winkeySeeds = ['winkey-init-project-seed-react']
+  //   } else {
+  //     result.forEach((item) => {
+  //       if (item.name.indexOf('winkey-init-project-') > -1) {
+  //         winkeySeeds.push(item.name)
+  //       }
+  //     })
+  //   }
+  //   return winkeySeeds
+  // } catch (err) {
+  //   logger(LogType.Error, `seeds 包返回错误: ${err}`)
+  // }
 
   return winkeySeeds
 }

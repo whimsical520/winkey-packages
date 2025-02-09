@@ -8,7 +8,7 @@ import chokidar from 'chokidar'
 import inquirer from 'inquirer'
 import { ExecType } from './index'
 import type { WkMiniProgramOptions, WkMiniProgramCompilerOption } from './types/index'
-import { styleFileSuffixMap } from './lib/consts'
+import { styleFileSuffixMap, apiPrefixMap } from './lib/consts'
 import chalk from 'chalk'
 import { esbuildPlugin } from './lib/esbuildPlugin'
 
@@ -22,9 +22,9 @@ class WkMiniProgram {
   private from: string
 
   constructor(config: WkMiniProgramOptions) {
-    this.rootPath = process.cwd()
-    this.baseEntryPath = path.join(this.rootPath, config.entry || './src')
-    this.baseOutputPath = path.join(this.rootPath, config.output || './output')
+    this.rootPath = path.resolve(process.cwd(), config.context || './')
+    this.baseEntryPath = path.resolve(this.rootPath, config.entry || './src')
+    this.baseOutputPath = path.resolve(this.rootPath, config.output || './output')
     this.compilerOptions = config.compilerOptions || []
     this.from = config.from
 
@@ -163,12 +163,32 @@ class WkMiniProgram {
         type || LogType.Success,
         index
       )
-    } else if (/(.*).wxml/.test(filename)) {
-      // 处理模板
-      fs.copyFileSync(entryPath, outputPath)
+    } else if (new RegExp(`(.*)${this.from}`, "i").test(filename)) {
+      const fileNameMatch = filename.match(/(.*)\.[^.]+$/)
+      const preFileName = fileNameMatch![1] || ''
+      const platform = index === undefined ? this.from : this.compilerOptions[index].platform
+      outputPath = path.resolve(path.resolve(outputPath, '../'), preFileName + `.${platform}`)
+      
+       // 处理模板
+      if (platform === this.from) {
+        // 相同类似的文件，直接copy
+        
+        fs.copyFileSync(entryPath, outputPath)
+      } else {
+        const data = fs.readFileSync(entryPath, 'utf8');
 
+        const originApiPrefix = apiPrefixMap[this.from]
+        const targetApiPrefix = apiPrefixMap[platform]
+
+        const modifiedData = data.replace(new RegExp(`${originApiPrefix}:`, 'g'), `${targetApiPrefix}:`)
+
+        fs.writeFileSync(outputPath, modifiedData)
+      }
+      
+     
+     
       this.log(
-        `[wxml-wxml] [${path.resolve(path.resolve(outputPath, '../'), filename)}]`,
+        `[${this.from}-${platform}] [${outputPath}]`,
         type || LogType.Correct,
         index
       )
@@ -190,6 +210,7 @@ class WkMiniProgram {
     } else if (/(.*).less/.test(filename)) {
       // 处理样式文件
       const match = filename.match(/(.*).less/)
+      const newSuffix = styleFileSuffixMap[index !== undefined ? this.compilerOptions[index].platform : 'wx']
 
       esbuild
         .build({
@@ -197,7 +218,7 @@ class WkMiniProgram {
           outfile: path.resolve(
             path.resolve(outputPath, '../'),
             match[1] +
-              `.${styleFileSuffixMap[index !== undefined ? this.compilerOptions[index].platform : 'wx']}`
+              `.${newSuffix}`
           ),
           bundle: true,
           plugins:
@@ -217,7 +238,7 @@ class WkMiniProgram {
         })
 
       this.log(
-        `[less-wxss] [${path.resolve(path.resolve(outputPath, '../'), match[1] + '.wxss')}]`,
+        `[less-${newSuffix}] [${path.resolve(path.resolve(outputPath, '../'), match[1] + `.${newSuffix}`)}]`,
         type || LogType.Success,
         index
       )

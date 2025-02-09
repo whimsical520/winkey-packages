@@ -54,7 +54,7 @@ async function getWkConfig(context, args?: CommandArgs) {
     } else {
       const config = await formatWkConfig({
         config: {
-          ...require(outfile).default,
+          ...require(outfile),
           context: root
         },
         args
