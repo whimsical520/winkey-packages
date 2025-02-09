@@ -163,35 +163,32 @@ class WkMiniProgram {
         type || LogType.Success,
         index
       )
-    } else if (new RegExp(`(.*)${this.from}`, "i").test(filename)) {
+    } else if (new RegExp(`(.*)${this.from}`, 'i').test(filename)) {
       const fileNameMatch = filename.match(/(.*)\.[^.]+$/)
       const preFileName = fileNameMatch![1] || ''
       const platform = index === undefined ? this.from : this.compilerOptions[index].platform
       outputPath = path.resolve(path.resolve(outputPath, '../'), preFileName + `.${platform}`)
-      
-       // 处理模板
+
+      // 处理模板
       if (platform === this.from) {
         // 相同类似的文件，直接copy
-        
+
         fs.copyFileSync(entryPath, outputPath)
       } else {
-        const data = fs.readFileSync(entryPath, 'utf8');
+        const data = fs.readFileSync(entryPath, 'utf8')
 
         const originApiPrefix = apiPrefixMap[this.from]
         const targetApiPrefix = apiPrefixMap[platform]
 
-        const modifiedData = data.replace(new RegExp(`${originApiPrefix}:`, 'g'), `${targetApiPrefix}:`)
+        const modifiedData = data.replace(
+          new RegExp(`${originApiPrefix}:`, 'g'),
+          `${targetApiPrefix}:`
+        )
 
         fs.writeFileSync(outputPath, modifiedData)
       }
-      
-     
-     
-      this.log(
-        `[${this.from}-${platform}] [${outputPath}]`,
-        type || LogType.Correct,
-        index
-      )
+
+      this.log(`[${this.from}-${platform}] [${outputPath}]`, type || LogType.Correct, index)
     } else if (/(.*).json/.test(filename)) {
       fs.copyFileSync(entryPath, outputPath)
 
@@ -210,16 +207,13 @@ class WkMiniProgram {
     } else if (/(.*).less/.test(filename)) {
       // 处理样式文件
       const match = filename.match(/(.*).less/)
-      const newSuffix = styleFileSuffixMap[index !== undefined ? this.compilerOptions[index].platform : 'wx']
+      const newSuffix =
+        styleFileSuffixMap[index !== undefined ? this.compilerOptions[index].platform : 'wx']
 
       esbuild
         .build({
           entryPoints: [entryPath],
-          outfile: path.resolve(
-            path.resolve(outputPath, '../'),
-            match[1] +
-              `.${newSuffix}`
-          ),
+          outfile: path.resolve(path.resolve(outputPath, '../'), match[1] + `.${newSuffix}`),
           bundle: true,
           plugins:
             index !== undefined

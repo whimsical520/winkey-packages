@@ -1,4 +1,3 @@
-/// <reference types="node" />
 export declare const cwd: string;
 export declare const platform: NodeJS.Platform;
 export declare const getRootName: () => string;

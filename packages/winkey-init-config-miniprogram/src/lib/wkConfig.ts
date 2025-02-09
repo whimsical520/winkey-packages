@@ -181,7 +181,7 @@ export async function formatWkConfig(op) {
   const nextCompilerOptions = compilerOptions.map((opt) => {
     const projectName = opt.projectName
     const appid = opt.appid
-    const platform = opt.platform 
+    const platform = opt.platform
     const key = opt.key
     const ignores = opt.ignores || []
     const projectConfigPath = opt.projectConfigPath
