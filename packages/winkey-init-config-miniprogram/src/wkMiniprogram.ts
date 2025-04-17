@@ -233,7 +233,7 @@ class WkMiniProgram {
       )
     } else {
       // 其他文件，一律复制
-      this.copyFile(entryPath, outputPath, index)
+      this.copyFile(entryPath, outputPath)
     }
   }
 
