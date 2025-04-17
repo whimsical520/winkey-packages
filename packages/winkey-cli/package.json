@@ -1,6 +1,6 @@
 {
   "name": "winkey-cli",
-  "version": "2.0.33",
+  "version": "2.0.34",
   "description": "> TODO: description",
   "author": "Ricardom520 <1781218530@qq.com>",
   "homepage": "https://github.com/whimsical520/winkey-packages#readme",
@@ -45,7 +45,7 @@
     "chalk": "2.4.2",
     "commander": "^12.0.0",
     "ts-node": "^10.9.2",
-    "winkey-init-config-miniprogram": "^2.0.30",
+    "winkey-init-config-miniprogram": "^2.0.31",
     "winkey-log": "^2.0.25",
     "winkey-os": "^2.0.25"
   },
