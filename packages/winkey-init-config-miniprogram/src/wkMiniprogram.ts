@@ -11,6 +11,7 @@ import type { WkMiniProgramOptions, WkMiniProgramCompilerOption } from './types/
 import { styleFileSuffixMap, apiPrefixMap } from './lib/consts'
 import chalk from 'chalk'
 import { esbuildPlugin } from './lib/esbuildPlugin'
+import { getFileExtension } from './lib/tools'
 
 const { exec } = require('child_process')
 
@@ -177,7 +178,7 @@ class WkMiniProgram {
       if (suffix === 'wx') {
         suffix = 'wxml' 
       }
-      
+
       outputPath = path.resolve(path.resolve(outputPath, '../'), preFileName + `.${platform}`)
 
       // 处理模板
@@ -240,6 +241,13 @@ class WkMiniProgram {
       )
     } else {
       // 其他文件，一律复制
+      const suffix = getFileExtension(outputPath)
+
+      this.log(
+        `[${suffix}-${suffix}] [${path.resolve(path.resolve(outputPath, '../'), filename)}]`,
+        type || LogType.Correct,
+        index
+      )
       this.copyFile(entryPath, outputPath)
     }
   }
