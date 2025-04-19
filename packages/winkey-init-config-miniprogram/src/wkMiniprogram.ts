@@ -176,7 +176,7 @@ class WkMiniProgram {
       let suffix = platform
 
       if (suffix === 'wx') {
-        suffix = 'wxml' 
+        suffix = 'wxml'
       }
 
       outputPath = path.resolve(path.resolve(outputPath, '../'), preFileName + `.${platform}`)
