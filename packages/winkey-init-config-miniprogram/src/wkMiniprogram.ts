@@ -171,6 +171,13 @@ class WkMiniProgram {
       const fileNameMatch = filename.match(/(.*)\.[^.]+$/)
       const preFileName = fileNameMatch![1] || ''
       const platform = index === undefined ? this.from : this.compilerOptions[index].platform
+
+      let suffix = platform
+
+      if (suffix === 'wx') {
+        suffix = 'wxml' 
+      }
+      
       outputPath = path.resolve(path.resolve(outputPath, '../'), preFileName + `.${platform}`)
 
       // 处理模板
