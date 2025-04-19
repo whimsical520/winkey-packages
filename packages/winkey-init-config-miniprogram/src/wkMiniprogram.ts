@@ -90,7 +90,7 @@ class WkMiniProgram {
 
   private async handleCopy(index?: number) {
     const outputPath = index !== undefined ? this.compilerOptions[index].root : this.baseOutputPath
-    this.copyFile(this.baseEntryPath, outputPath, index)
+    this.copyFolder(this.baseEntryPath, outputPath, index)
 
     // 转移配置文件
     await this.getProjectJson(index)
@@ -119,7 +119,7 @@ class WkMiniProgram {
     }
   }
 
-  private copyFile(entry, output, index?: number) {
+  private copyFolder(entry, output, index?: number) {
     const files = fs.readdirSync(entry)
     for (let i = 0; i < files.length; i++) {
       const entryPath = path.join(entry, files[i])
@@ -127,6 +127,10 @@ class WkMiniProgram {
 
       this.handleFile(entryPath, outputPath, null, index)
     }
+  }
+
+  private copyFile(entry, output) {
+    fs.copyFileSync(entry, output)
   }
 
   private handleFile(entryPath, outputPath, type?: LogType, index?: number) {
@@ -203,7 +207,7 @@ class WkMiniProgram {
         fs.mkdirSync(outputPath)
       }
 
-      this.copyFile(entryPath, outputPath, index)
+      this.copyFolder(entryPath, outputPath, index)
     } else if (/(.*).less/.test(filename)) {
       // 处理样式文件
       const match = filename.match(/(.*).less/)
@@ -215,16 +219,7 @@ class WkMiniProgram {
           entryPoints: [entryPath],
           outfile: path.resolve(path.resolve(outputPath, '../'), match[1] + `.${newSuffix}`),
           bundle: true,
-          plugins:
-            index !== undefined
-              ? [
-                  esbuildPlugin({
-                    fileType: 'less',
-                    ...this.compilerOptions[index]
-                  }),
-                  lessLoader()
-                ]
-              : [lessLoader()]
+          plugins: [lessLoader()]
         })
         .catch((err) => {
           logger(LogType.Error, err)
@@ -236,6 +231,9 @@ class WkMiniProgram {
         type || LogType.Success,
         index
       )
+    } else {
+      // 其他文件，一律复制
+      this.copyFile(entryPath, outputPath)
     }
   }
 
