@@ -194,6 +194,7 @@ export async function formatWkConfig(op) {
     const env = opt.env || {}
     const npmIgnores = opt.npmIgnores || []
     const syncResouce = opt.syncResouce || {}
+    const jsBundle = opt.jsBundle !== undefined ? opt.jsBundle : config.jsBundle || false 
 
     return {
       projectName,
@@ -207,7 +208,8 @@ export async function formatWkConfig(op) {
       alias,
       env,
       npmIgnores,
-      syncResouce
+      syncResouce,
+      jsBundle: jsBundle
     }
   })
 

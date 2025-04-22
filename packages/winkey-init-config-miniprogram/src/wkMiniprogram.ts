@@ -23,6 +23,7 @@ class WkMiniProgram {
   private from: string
 
   constructor(config: WkMiniProgramOptions) {
+    console.log('config:', config)
     this.rootPath = path.resolve(process.cwd(), config.context || './')
     this.baseEntryPath = path.resolve(this.rootPath, config.entry || './src')
     this.baseOutputPath = path.resolve(this.rootPath, config.output || './output')
@@ -136,6 +137,7 @@ class WkMiniProgram {
 
   private handleFile(entryPath, outputPath, type?: LogType, index?: number) {
     const filename = path.basename(entryPath)
+    console.log('this:', this)
     if (filename.includes('.ts') && !filename.includes('.d.ts')) {
       // 处理ts文件
       const match = filename.match(/(.*).ts/)
@@ -144,7 +146,7 @@ class WkMiniProgram {
         .build({
           entryPoints: [entryPath],
           outfile: path.resolve(path.resolve(outputPath, '../'), match[1] + '.js'),
-          bundle: true,
+          bundle: this.compilerOptions[index]?.jsBundle || true,
           sourcemap: false,
           charset: 'utf8',
           plugins:

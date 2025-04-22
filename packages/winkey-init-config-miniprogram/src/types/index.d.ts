@@ -34,6 +34,8 @@ export type WkMiniProgramCompilerOption = {
   npmIgnores?: string[]
   /** 异步信息 */
   syncResouce?: Record<string, string>
+  /** @name js是否bundle模式 */
+  jsBundle?: boolean
 }
 
 export type WkMiniProgramOptions = {
@@ -59,4 +61,6 @@ export type WkMiniProgramOptions = {
   compilerOptions?: WkMiniProgramCompilerOption[]
   /** @name 钩子方法 */
   hooks?: unknown
+  /** @name 是否开启jsBundle */
+  jsBundle?: boolean
 }
