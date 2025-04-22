@@ -200,7 +200,7 @@ class WkMiniProgram {
         fs.writeFileSync(outputPath, modifiedData)
       }
 
-      this.log(`[${this.from}-${platform}] [${outputPath}]`, type || LogType.Correct, index)
+      this.log(`[${this.from}-${suffix}] [${outputPath}]`, type || LogType.Correct, index)
     } else if (/(.*).json/.test(filename)) {
       fs.copyFileSync(entryPath, outputPath)
 
