@@ -129,7 +129,7 @@ export async function formatWkConfig(op) {
     )
   }
 
-  let compilerOptions = config.compilerOptions || []
+  let compilerOptions: WkMiniProgramCompilerOption[] = config.compilerOptions || []
 
   // 过滤掉没有必要参数的配置
   compilerOptions = compilerOptions.filter((opt: WkMiniProgramCompilerOption, index) => {
@@ -188,13 +188,11 @@ export async function formatWkConfig(op) {
       ? path.join(context, opt.projectConfigPath)
       : pjConfigPathMap[platform]
     const privateKeyPath = opt.privateKeyPath ? path.resolve(context, opt.privateKeyPath) : ''
-    const alias = opt.alias || {}
-
     const pjRoot = path.resolve(path.join(context, output), `${platform}-${key}`)
     const env = opt.env || {}
     const npmIgnores = opt.npmIgnores || []
     const syncResouce = opt.syncResouce || {}
-    const jsBundle = opt.jsBundle !== undefined ? opt.jsBundle : config.jsBundle || false
+    const jsConfig = opt.jsConfig || config.jsConfig || {}
 
     return {
       projectName,
@@ -205,11 +203,10 @@ export async function formatWkConfig(op) {
       projectConfigPath,
       privateKeyPath,
       root: pjRoot,
-      alias,
       env,
       npmIgnores,
       syncResouce,
-      jsBundle: jsBundle
+      jsConfig: jsConfig
     }
   })
 
@@ -231,7 +228,7 @@ export async function formatWkConfig(op) {
 
   logger(
     LogType.Info,
-    `[${logPrefix}] 执行 ${chalk.cyan('hooks.initConfig')} 前， ${chalk.cyan('compilerOptions')} 共有 ${chalk.green(compilerOptions.length)} 个配置`
+    `[${logPrefix}] 执行 ${chalk.cyan('hooks.initConfig')} 前， ${chalk.cyan('compilerOptions')} 共有 ${chalk.green(compilerOptions.length as any)} 个配置`
   )
 
   // 初始化配置hooks
@@ -240,7 +237,7 @@ export async function formatWkConfig(op) {
     r = await hooks.initConfig({ wkConfig: r, logger: logger, env: iEnv })
     logger(
       LogType.Success,
-      `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.initConfig')}， ${chalk.cyan('compilerOptions')} 共有 ${chalk.green(r.compilerOptions.length)} 个配置`
+      `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.initConfig')}， ${chalk.cyan('compilerOptions')} 共有 ${chalk.green(r.compilerOptions.length as any)} 个配置`
     )
 
     // 重新初始化 effectTargets
@@ -261,7 +258,7 @@ export async function formatWkConfig(op) {
     })
     logger(
       LogType.Info,
-      `[${logPrefix}] 筛选后 ${chalk.cyan('key')} 符合 ${printTargets} 的配置项有 ${chalk.green(compilerOptions.length)} 个`
+      `[${logPrefix}] 筛选后 ${chalk.cyan('key')} 符合 ${printTargets} 的配置项有 ${chalk.green(compilerOptions.length as any)} 个`
     )
   }
 
@@ -275,7 +272,7 @@ export async function formatWkConfig(op) {
     })
     logger(
       LogType.Info,
-      `[${logPrefix}] 筛选后 ${chalk.cyan('platform')} 符合 ${printPlatforms} 的配置项有 ${chalk.green(compilerOptions.length)} 个`
+      `[${logPrefix}] 筛选后 ${chalk.cyan('platform')} 符合 ${printPlatforms} 的配置项有 ${chalk.green(compilerOptions.length as any)} 个`
     )
   }
 
@@ -323,16 +320,6 @@ export async function formatWkConfig(op) {
         logger(LogType.Info, `[${logPrefix}] > ignores:`)
         opt.ignores.forEach((ctx) => {
           logger(LogType.Info, `[${logPrefix}] > - ${chalk.magenta(ctx)}`)
-        })
-      }
-      if (Object.keys(opt.alias).length) {
-        logger(LogType.Info, `[${logPrefix}] > alias:`)
-        Object.keys(opt.alias).forEach((key) => {
-          const val = opt.alias[key]
-          logger(
-            LogType.Info,
-            `[${logPrefix}] > - ${chalk.magenta(key)} - ${chalk.magentaBright(val)}`
-          )
         })
       }
       if (Object.keys(opt.env).length) {

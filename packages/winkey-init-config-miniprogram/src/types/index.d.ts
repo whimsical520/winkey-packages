@@ -10,6 +10,13 @@ export type CommandArgs = {
   target: string
 }
 
+export type JSConfig = {
+  /** @name 是否开启jsBundle */
+  bundle?: boolean
+  /** @name 是否支持配置alias */
+  alias?: Record<string, string>
+}
+
 export type WkMiniProgramCompilerOption = {
   /** 项目名称 */
   projectName: string
@@ -27,15 +34,14 @@ export type WkMiniProgramCompilerOption = {
   privateKeyPath?: string
   /** 产出目录 */
   root?: string
-  alias?: Object
   /** 环境配置 */
   env?: Record<string, string>
   /** npm包忽略信息 */
   npmIgnores?: string[]
   /** 异步信息 */
   syncResouce?: Record<string, string>
-  /** @name js是否bundle模式 */
-  jsBundle?: boolean
+  /** js配置 */
+  jsConfig?: JSConfig
 }
 
 export type WkMiniProgramOptions = {
@@ -60,7 +66,7 @@ export type WkMiniProgramOptions = {
   /** @name 单独配置信息 */
   compilerOptions?: WkMiniProgramCompilerOption[]
   /** @name 钩子方法 */
-  hooks?: unknown
-  /** @name 是否开启jsBundle */
-  jsBundle?: boolean
+  hooks?: [(config: Omit<WkMiniProgramOptions, 'hooks'>) => void]
+  /** js配置 */
+  jsConfig?: JSConfig
 }

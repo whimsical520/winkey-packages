@@ -141,23 +141,22 @@ class WkMiniProgram {
       // 处理ts文件
       const match = filename.match(/(.*).ts/)
 
+      const plugins = [
+        esbuildPlugin({
+          fileType: 'ts',
+          from: this.from,
+          ...this.compilerOptions[index]
+        })
+      ]
+
       esbuild
         .build({
           entryPoints: [entryPath],
           outfile: path.resolve(path.resolve(outputPath, '../'), match[1] + '.js'),
-          bundle: this.compilerOptions[index]?.jsBundle || true,
+          bundle: this.compilerOptions[index]?.jsConfig?.bundle,
           sourcemap: false,
           charset: 'utf8',
-          plugins:
-            index !== undefined
-              ? [
-                  esbuildPlugin({
-                    fileType: 'ts',
-                    from: this.from,
-                    ...this.compilerOptions[index]
-                  })
-                ]
-              : []
+          plugins: plugins
         })
         .catch((err) => {
           logger(LogType.Error, err)
