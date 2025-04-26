@@ -145,6 +145,7 @@ class WkMiniProgram {
         esbuildPlugin({
           fileType: 'ts',
           from: this.from,
+          filePath: entryPath,
           ...this.compilerOptions[index]
         })
       ]
