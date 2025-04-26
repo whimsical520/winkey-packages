@@ -48,32 +48,37 @@ export const esbuildPlugin = (params) => {
                 Object.keys(jsConfig.alias).forEach((key) => {
                   if (pre === key) {
                     let aliasPath = jsConfig.alias[key]
-                
+
                     if (!path.isAbsolute(aliasPath)) {
                       aliasPath = path.resolve(process.cwd(), aliasPath)
                     }
 
                     // 移除别名前缀，获取实际路径
-                    const regex = new RegExp(`${key}(.*)`);
+                    const regex = new RegExp(`${key}(.*)`)
                     const importPathMatch = importPath.match(regex)
-  
+
                     if (importPathMatch[1]) {
-                      const contentAfterSymbol = importPathMatch[1].trim();
+                      const contentAfterSymbol = importPathMatch[1].trim()
                       // 去掉末尾的单引号或双引号
-                      const actualPath = contentAfterSymbol.replace(/['"]+$/, '');
+                      const actualPath = contentAfterSymbol.replace(/['"]+$/, '')
 
                       const absoluteImportPath = path.join(aliasPath, actualPath)
 
                       // 计算相对路径
                       const fileDir = path.dirname(filePath)
 
-                      const relativePath = path.relative(fileDir, absoluteImportPath).split(path.sep).join('/')
+                      const relativePath = path
+                        .relative(fileDir, absoluteImportPath)
+                        .split(path.sep)
+                        .join('/')
 
                       // 确保相对路径以 ./ 或 ../开头
-                      const finalPath = relativePath.startsWith('.') ? relativePath : './' + relativePath
+                      const finalPath = relativePath.startsWith('.')
+                        ? relativePath
+                        : './' + relativePath
 
                       const originalImport = importPathMatch[0].replace(/['"]+$/, '')
-                      // 替换原始导入语句                    
+                      // 替换原始导入语句
                       contents = contents.replace(originalImport, finalPath)
                     }
                   }
@@ -81,7 +86,6 @@ export const esbuildPlugin = (params) => {
               }
             })
           }
-         
         }
 
         return { contents: contents, loader: loaderMap[fileType] }
