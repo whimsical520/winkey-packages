@@ -33,7 +33,7 @@
     "rollup-plugin-delete": "^2.0.0",
     "typescript": "^5.4.3"
   },
-  "gitHead": "34ab9c39f91a56048ff4cb67520a6d2ef9a03dbd",
+  "gitHead": "dc7701aa0d21662c3b097d3d2d86486a8de5969c",
   "dependencies": {
     "@types/node": "^20.12.12",
     "chalk": "2.4.2",
