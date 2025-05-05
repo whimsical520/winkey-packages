@@ -7,7 +7,12 @@ import moment from 'moment'
 import chokidar from 'chokidar'
 import inquirer from 'inquirer'
 import { ExecType } from './index'
-import type { WkMiniProgramOptions, WkMiniProgramCompilerOption, MiniWkAppPlatform, FormatedEnv } from './types/index'
+import type {
+  WkMiniProgramOptions,
+  WkMiniProgramCompilerOption,
+  MiniWkAppPlatform,
+  FormatedEnv
+} from './types/index'
 import { styleFileSuffixMap, apiPrefixMap } from './lib/consts'
 import chalk from 'chalk'
 import { esbuildPlugin } from './lib/esbuildPlugin'

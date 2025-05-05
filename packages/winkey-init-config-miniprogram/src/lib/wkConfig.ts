@@ -24,7 +24,7 @@ export function formatEnv(env?: string[]): FormatedEnv {
         }
         r[key] = value
       } else {
-        Object.keys(ctx).forEach(key => {
+        Object.keys(ctx).forEach((key) => {
           r[key] = ctx[key]
         })
       }

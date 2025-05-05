@@ -20,7 +20,7 @@ export function deepDeleteFolder(folderPath: string) {
     console.log('files:', files)
     console.log('folderPath:', folderPath)
     for (let i = 0; i < files.length; i++) {
-      const filePath = path.join(folderPath, files[i]);
+      const filePath = path.join(folderPath, files[i])
 
       if (fs.statSync(filePath).isFile()) {
         fs.unlinkSync(filePath)

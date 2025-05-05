@@ -55,11 +55,15 @@ async function getWkConfig(context, args?: CommandArgs) {
       const config = await formatWkConfig({
         config: {
           ...require(outfile),
-          context: root,
+          context: root
         },
-        env: args?.env ? [{
-          env: args?.env
-        }] : [],
+        env: args?.env
+          ? [
+              {
+                env: args?.env
+              }
+            ]
+          : [],
         args
       })
 
@@ -74,9 +78,13 @@ async function getWkConfig(context, args?: CommandArgs) {
           ...require(configJsPath),
           context: root
         },
-        env: args?.env ? [{
-          env: args?.env
-        }] : [],
+        env: args?.env
+          ? [
+              {
+                env: args?.env
+              }
+            ]
+          : [],
         args
       })
 
