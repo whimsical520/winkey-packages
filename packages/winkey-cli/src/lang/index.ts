@@ -53,6 +53,7 @@ export default {
   },
   DEV: {
     MINIPROGRAM_TARGET: '小程序目标 APPID',
-    MINIPROGRAM_PLATFORM: '小程序平台'
+    MINIPROGRAM_PLATFORM: '小程序平台',
+    ENVERSION: '环境变量'
   }
 }

@@ -1,8 +1,10 @@
-const wkConfig = {
+import type { WkMiniProgramOptions } from 'winkey-init-config-miniprogram'
+
+const wkConfig: WkMiniProgramOptions = {
   entry: './src',
   output: './output',
-  compilerOptions: [],
-  hooks: {}
+  from: 'wx',
+  compilerOptions: []
 }
 
 module.exports = wkConfig

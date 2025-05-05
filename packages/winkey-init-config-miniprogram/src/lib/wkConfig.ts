@@ -9,19 +9,25 @@ export function formatEnv(env?: string[]): FormatedEnv {
   const r: FormatedEnv = {}
   if (env) {
     env.forEach((ctx) => {
-      const [key, valueStr] = ctx.split('=')
+      if (typeof ctx === 'string') {
+        const [key, valueStr] = ctx.split('=')
 
-      let value: string | boolean | number = ''
-      if (valueStr === 'false') {
-        value = false
-      } else if (valueStr === 'true') {
-        value = true
-      } else if (!isNaN(+valueStr)) {
-        value = +valueStr
+        let value: string | boolean | number = ''
+        if (valueStr === 'false') {
+          value = false
+        } else if (valueStr === 'true') {
+          value = true
+        } else if (!isNaN(+valueStr)) {
+          value = +valueStr
+        } else {
+          value = valueStr
+        }
+        r[key] = value
       } else {
-        value = valueStr
+        Object.keys(ctx).forEach(key => {
+          r[key] = ctx[key]
+        })
       }
-      r[key] = value
     })
   }
   return r
@@ -159,6 +165,8 @@ export async function formatWkConfig(op) {
         return opt.platform === args.platform
       } else if (args.target) {
         return opt.appid === args.target
+      } else if (args.env) {
+        return true
       }
 
       return false
@@ -189,7 +197,7 @@ export async function formatWkConfig(op) {
       : pjConfigPathMap[platform]
     const privateKeyPath = opt.privateKeyPath ? path.resolve(context, opt.privateKeyPath) : ''
     const pjRoot = path.resolve(path.join(context, output), `${platform}-${key}`)
-    const env = opt.env || {}
+    const env = opt.env || iEnv || {}
     const npmIgnores = opt.npmIgnores || []
     const syncResouce = opt.syncResouce || {}
     const jsConfig = opt.jsConfig || config.jsConfig || {}
@@ -219,6 +227,7 @@ export async function formatWkConfig(op) {
     tsConfigPath,
     effectTargets,
     preview,
+    env: iEnv,
     compilerOptions: nextCompilerOptions,
     devServer,
     version,

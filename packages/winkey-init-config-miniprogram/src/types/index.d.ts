@@ -5,9 +5,12 @@ export interface FormatedEnv {
 /** 发布平台 */
 export type MiniWkAppPlatform = 'wx' | 'swan' | 'tt' | 'ks'
 
+export type Env = 'prod' | 'sit' | 'test' | 'dev' | 'local'
+
 export type CommandArgs = {
   platform: MiniWkAppPlatform
   target: string
+  env: Env
 }
 
 export type JSConfig = {
@@ -35,7 +38,7 @@ export type WkMiniProgramCompilerOption = {
   /** 产出目录 */
   root?: string
   /** 环境配置 */
-  env?: Record<string, string>
+  env?: FormatedEnv
   /** npm包忽略信息 */
   npmIgnores?: string[]
   /** 异步信息 */
@@ -51,6 +54,8 @@ export type WkMiniProgramOptions = {
   output: string
   /** @name 模板来源 */
   from: MiniWkAppPlatform
+  /** @name 平台信息 */
+  platform?: MiniWkAppPlatform
   /** @name 全局上下文 */
   context?: string
   /** npm保持最新包 */
@@ -59,7 +64,8 @@ export type WkMiniProgramOptions = {
   tsConfigPath?: string
   /** 有效目标 */
   effectTargets?: string[]
-  /** ??? */
+  /** 环境变量 */
+  env?: FormatedEnv
   preview?: {
     list: unknown
   }

@@ -7,11 +7,11 @@ import moment from 'moment'
 import chokidar from 'chokidar'
 import inquirer from 'inquirer'
 import { ExecType } from './index'
-import type { WkMiniProgramOptions, WkMiniProgramCompilerOption } from './types/index'
+import type { WkMiniProgramOptions, WkMiniProgramCompilerOption, MiniWkAppPlatform, FormatedEnv } from './types/index'
 import { styleFileSuffixMap, apiPrefixMap } from './lib/consts'
 import chalk from 'chalk'
 import { esbuildPlugin } from './lib/esbuildPlugin'
-import { getFileExtension } from './lib/tools'
+import { getFileExtension, deepDeleteFolder } from './lib/tools'
 
 const { exec } = require('child_process')
 
@@ -21,22 +21,34 @@ class WkMiniProgram {
   private rootPath: string
   private compilerOptions: WkMiniProgramCompilerOption[] = []
   private from: string
+  private env: FormatedEnv
+  private platform: MiniWkAppPlatform
 
-  constructor(config: WkMiniProgramOptions) {
+  constructor(config: WkMiniProgramOptions, type: ExecType) {
     this.rootPath = path.resolve(process.cwd(), config.context || './')
     this.baseEntryPath = path.resolve(this.rootPath, config.entry || './src')
     this.baseOutputPath = path.resolve(this.rootPath, config.output || './output')
     this.compilerOptions = config.compilerOptions || []
     this.from = config.from
+    this.env = config.env
+    this.platform = config.platform
 
     if (!fs.existsSync(this.baseOutputPath)) {
       fs.mkdirSync(this.baseOutputPath)
+    } else {
+      if (type === ExecType.Build) {
+        deepDeleteFolder(this.baseOutputPath)
+      }
     }
 
     if (this.compilerOptions.length) {
       for (let i = 0; i < this.compilerOptions.length; i++) {
         if (!fs.existsSync(this.compilerOptions[i].root)) {
           fs.mkdirSync(this.compilerOptions[i].root)
+        } else {
+          if (type === ExecType.Build) {
+            deepDeleteFolder(this.baseOutputPath)
+          }
         }
       }
     }
@@ -146,6 +158,8 @@ class WkMiniProgram {
           fileType: 'ts',
           from: this.from,
           filePath: entryPath,
+          env: this.env,
+          platform: this.platform || this.from,
           ...this.compilerOptions[index]
         })
       ]

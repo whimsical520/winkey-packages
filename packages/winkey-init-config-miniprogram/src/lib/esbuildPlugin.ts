@@ -34,7 +34,7 @@ export const esbuildPlugin = (params) => {
           })
         }
 
-        if (jsConfig.alias) {
+        if (jsConfig?.alias) {
           const matches = contents.match(importRegexTS)
 
           if (matches) {

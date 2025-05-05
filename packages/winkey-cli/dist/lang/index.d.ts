@@ -54,6 +54,7 @@ declare const _default: {
     DEV: {
         MINIPROGRAM_TARGET: string;
         MINIPROGRAM_PLATFORM: string;
+        ENVERSION: string;
     };
 };
 export default _default;

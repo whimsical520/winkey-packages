@@ -13,10 +13,18 @@ const { program } = commander
 program.command('init').action(task.initAction)
 
 /** 运行 */
-program.command('dev').option('-t, --target <key>', lang.DEV.MINIPROGRAM_TARGET).option('--platform <platform>', lang.DEV.MINIPROGRAM_PLATFORM).action(task.devAction)
+program.command('dev')
+    .option('-t, --target <key>', lang.DEV.MINIPROGRAM_TARGET)
+    .option('--platform <platform>', lang.DEV.MINIPROGRAM_PLATFORM)
+    .option('--env <env>', lang.DEV.ENVERSION)
+    .action(task.devAction)
 
 /** 打包 */
-program.command('build').action(task.buildAction)
+program.command('build') 
+    .option('-t, --target <key>', lang.DEV.MINIPROGRAM_TARGET)
+    .option('--platform <platform>', lang.DEV.MINIPROGRAM_PLATFORM)
+    .option('--env <env>', lang.DEV.ENVERSION)
+    .action(task.buildAction)
 
 /** 更新seed包 */
 program.command('update').action(task.updateAction)

@@ -17,6 +17,11 @@ export const devAction = async (args, cmder: ActionSturct) => {
     return
   }
 
+  if (args?.env) {
+    process.env.NODE_ENV = args.env
+    logger(LogType.Info, `当前环境变量--${args.env}`)
+  }
+
   const pkg = require(path.resolve(targetPath, 'package.json'))
 
   if (pkg.winkeyWorkFlow === WinkeyWorkFlow.Vite) {

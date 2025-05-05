@@ -20,7 +20,7 @@ export async function initWinkeyConfig(type: ExecType, context: string, args?: C
     return
   }
 
-  const wkMiniProgram = new WkMiniProgram(config)
+  const wkMiniProgram = new WkMiniProgram(config, type)
 
   wkMiniProgram.init(type)
 }
@@ -55,8 +55,11 @@ async function getWkConfig(context, args?: CommandArgs) {
       const config = await formatWkConfig({
         config: {
           ...require(outfile),
-          context: root
+          context: root,
         },
+        env: args?.env ? [{
+          env: args?.env
+        }] : [],
         args
       })
 
@@ -70,7 +73,11 @@ async function getWkConfig(context, args?: CommandArgs) {
         config: {
           ...require(configJsPath),
           context: root
-        }
+        },
+        env: args?.env ? [{
+          env: args?.env
+        }] : [],
+        args
       })
 
       return [undefined, config]
