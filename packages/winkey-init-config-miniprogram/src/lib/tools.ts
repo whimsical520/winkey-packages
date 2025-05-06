@@ -15,10 +15,8 @@ export function getFileExtension(filePath) {
 export function deepDeleteFolder(folderPath: string) {
   try {
     if (fs.statSync(folderPath).isFile()) return
-    console.log('??????')
     const files = fs.readdirSync(folderPath)
-    console.log('files:', files)
-    console.log('folderPath:', folderPath)
+
     for (let i = 0; i < files.length; i++) {
       const filePath = path.join(folderPath, files[i])
 
@@ -33,5 +31,23 @@ export function deepDeleteFolder(folderPath: string) {
     }
   } catch (e) {
     throw e
+  }
+}
+
+export function getArgsEnv(str: string) {
+  if (!str){
+    return {}
+  }
+
+  if (str.indexOf('=') > -1) {
+    const arrs = str.split('=')
+
+    return {
+      [arrs[0]]: arrs[1]
+    }
+  } else {
+    return {
+      env: str
+    }
   }
 }

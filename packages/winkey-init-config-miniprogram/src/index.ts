@@ -4,6 +4,7 @@ import fs from 'fs'
 import { logger, LogType } from 'winkey-log'
 import esbuild from 'esbuild'
 import { formatWkConfig } from './lib/wkConfig'
+import { getArgsEnv } from './lib/tools'
 import type { CommandArgs } from './types/index'
 export type { MiniWkAppPlatform, WkMiniProgramOptions } from './types'
 
@@ -59,9 +60,7 @@ async function getWkConfig(context, args?: CommandArgs) {
         },
         env: args?.env
           ? [
-              {
-                env: args?.env
-              }
+              getArgsEnv(args?.env)
             ]
           : [],
         args
@@ -80,9 +79,7 @@ async function getWkConfig(context, args?: CommandArgs) {
         },
         env: args?.env
           ? [
-              {
-                env: args?.env
-              }
+            getArgsEnv(args?.env)
             ]
           : [],
         args
