@@ -88,7 +88,7 @@ export async function formatWkConfig(op) {
     : path.resolve(entry, 'types')
 
   // hooks 初始化
-  const hooks = config.hooks || {}
+  const hooks = config.hooks || []
 
   // from 初始化
   let from = config.from
@@ -241,21 +241,28 @@ export async function formatWkConfig(op) {
   )
 
   // 初始化配置hooks
-  if (hooks.initConfig) {
-    logger(LogType.Info, `[${logPrefix}] 开始执行 - ${chalk.cyan('hooks.initConfig')}`)
-    r = await hooks.initConfig({ wkConfig: r, logger: logger, env: iEnv })
-    logger(
-      LogType.Success,
-      `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.initConfig')}， ${chalk.cyan('compilerOptions')} 共有 ${chalk.green(r.compilerOptions.length as any)} 个配置`
-    )
+  for (let i = 0; i < hooks.length; i++) {
+    if (hooks[i]?.initConfig) {
+      logger(LogType.Info, `[${logPrefix}] 开始执行 - ${chalk.cyan('hooks.initConfig')}`)
+      const newR = await hooks[i].initConfig({ wkConfig: r, logger: logger, env: iEnv })
 
-    // 重新初始化 effectTargets
-    effectTargets = r.compilerOptions.map((item) => item.key)
+      if (newR) {
+        r = newR
+      }
 
-    logger(
-      LogType.Info,
-      `[${logPrefix}] 当前配置可指定 target 有 ${effectTargets.map((target) => chalk.cyan(target)).join(',')}`
-    )
+      logger(
+        LogType.Success,
+        `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.initConfig')}， ${chalk.cyan('compilerOptions')} 共有 ${chalk.green(r.compilerOptions.length as any)} 个配置`
+      )
+  
+      // 重新初始化 effectTargets
+      effectTargets = r.compilerOptions.map((item) => item.key)
+  
+      logger(
+        LogType.Info,
+        `[${logPrefix}] 当前配置可指定 target 有 ${effectTargets.map((target) => chalk.cyan(target)).join(',')}`
+      )
+    }
   }
 
   if (target) {
@@ -285,10 +292,17 @@ export async function formatWkConfig(op) {
     )
   }
 
-  if (hooks.beformCompile) {
-    logger(LogType.Info, `[${logPrefix}] 开始执行 - ${chalk.cyan('hooks.beforeCompile')}`)
-    await hooks.beforeCompile({ batConfig: r, logger: logger, env: iEnv })
-    logger(LogType.Success, `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.beforeCompile')}`)
+  for (let i = 0; i < hooks.length; i++) { 
+    if (hooks[i]?.beforeCompile) {
+      logger(LogType.Info, `[${logPrefix}] 开始执行 - ${chalk.cyan('hooks.beforeCompile')}`)
+      const newR = await hooks[i].beforeCompile({ wkConfig: r, logger: logger, env: iEnv })
+
+      if (newR) {
+        r = newR
+      } 
+
+      logger(LogType.Success, `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.beforeCompile')}`)
+    }
   }
 
   if (!silent) {

@@ -47,6 +47,23 @@ export type WkMiniProgramCompilerOption = {
   jsConfig?: JSConfig
 }
 
+export type WkMiniProgramHook = {
+  /** 初始化配置 */
+  initConfig?: (wkConfig: WkMiniProgramOptions) => Promise<WkMiniProgramOptions>
+  /** 配置开始前钩子 */
+  beforeCompile?: (wkConfig: WkMiniProgramOptions) => Promise<WkMiniProgramOptions>
+  /** 转换完成后的钩子 */
+  done?: (wkConfig: {
+    rootPath: string
+    baseEntryPath: string
+    baseOutputPath: string
+    compilerOptions: WkMiniProgramOptions
+    from: string
+    env: string
+    platform: string
+  }) => Promise<void>
+}
+
 export type WkMiniProgramOptions = {
   /** @name 入口文件 */
   entry: string
@@ -72,7 +89,7 @@ export type WkMiniProgramOptions = {
   /** @name 单独配置信息 */
   compilerOptions?: WkMiniProgramCompilerOption[]
   /** @name 钩子方法 */
-  hooks?: [(config: Omit<WkMiniProgramOptions, 'hooks'>) => void]
+  hooks?: WkMiniProgramHook[]
   /** js配置 */
   jsConfig?: JSConfig
 }

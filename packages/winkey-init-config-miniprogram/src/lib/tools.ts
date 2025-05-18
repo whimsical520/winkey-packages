@@ -35,7 +35,7 @@ export function deepDeleteFolder(folderPath: string) {
 }
 
 export function getArgsEnv(str: string) {
-  if (!str){
+  if (!str) {
     return {}
   }
 

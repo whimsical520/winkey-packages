@@ -58,11 +58,7 @@ async function getWkConfig(context, args?: CommandArgs) {
           ...require(outfile),
           context: root
         },
-        env: args?.env
-          ? [
-              getArgsEnv(args?.env)
-            ]
-          : [],
+        env: args?.env ? [getArgsEnv(args?.env)] : [],
         args
       })
 
@@ -77,11 +73,7 @@ async function getWkConfig(context, args?: CommandArgs) {
           ...require(configJsPath),
           context: root
         },
-        env: args?.env
-          ? [
-            getArgsEnv(args?.env)
-            ]
-          : [],
+        env: args?.env ? [getArgsEnv(args?.env)] : [],
         args
       })
 
