@@ -254,10 +254,10 @@ export async function formatWkConfig(op) {
         LogType.Success,
         `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.initConfig')}， ${chalk.cyan('compilerOptions')} 共有 ${chalk.green(r.compilerOptions.length as any)} 个配置`
       )
-  
+
       // 重新初始化 effectTargets
       effectTargets = r.compilerOptions.map((item) => item.key)
-  
+
       logger(
         LogType.Info,
         `[${logPrefix}] 当前配置可指定 target 有 ${effectTargets.map((target) => chalk.cyan(target)).join(',')}`
@@ -292,14 +292,14 @@ export async function formatWkConfig(op) {
     )
   }
 
-  for (let i = 0; i < hooks.length; i++) { 
+  for (let i = 0; i < hooks.length; i++) {
     if (hooks[i]?.beforeCompile) {
       logger(LogType.Info, `[${logPrefix}] 开始执行 - ${chalk.cyan('hooks.beforeCompile')}`)
       const newR = await hooks[i].beforeCompile({ wkConfig: r, logger: logger, env: iEnv })
 
       if (newR) {
         r = newR
-      } 
+      }
 
       logger(LogType.Success, `[${logPrefix}] 执行完成 - ${chalk.cyan('hooks.beforeCompile')}`)
     }

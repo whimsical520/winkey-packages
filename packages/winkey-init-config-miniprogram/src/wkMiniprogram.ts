@@ -109,18 +109,22 @@ class WkMiniProgram {
 
     logger(LogType.Finish, '转换结束')
 
-    for (let i = 0; i < this.hooks.length; i++) { 
+    for (let i = 0; i < this.hooks.length; i++) {
       if (this.hooks[i]?.done) {
         logger(LogType.Info, `[done] 开始执行 - ${chalk.cyan('hooks.done')}`)
-        await this.hooks[i].done({ wkConfig: {
-          rootPath: this.rootPath,
-          baseEntryPath: this.baseEntryPath,
-          baseOutputPath: this.baseOutputPath,
-          compilerOptions: this.compilerOptions,
-          from: this.from,
-          env: this.env,
-          platform: this.platform,
-        }, logger: logger, env: this.env })
+        await this.hooks[i].done({
+          wkConfig: {
+            rootPath: this.rootPath,
+            baseEntryPath: this.baseEntryPath,
+            baseOutputPath: this.baseOutputPath,
+            compilerOptions: this.compilerOptions,
+            from: this.from,
+            env: this.env,
+            platform: this.platform
+          },
+          logger: logger,
+          env: this.env
+        })
         logger(LogType.Success, `[done] 执行完成 - ${chalk.cyan('hooks.done')}`)
       }
     }
