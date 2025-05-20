@@ -1,3 +1,5 @@
+import type { LogType } from 'winkey-log'
+
 export interface FormatedEnv {
   [key: string]: boolean | string | number
 }
@@ -51,16 +53,21 @@ export type WkMiniProgramHook = {
   /** 初始化配置 */
   initConfig?: (wkConfig: WkMiniProgramOptions) => Promise<WkMiniProgramOptions>
   /** 配置开始前钩子 */
-  beforeCompile?: (wkConfig: WkMiniProgramOptions) => Promise<WkMiniProgramOptions>
+  beforeCompile?: (params: {
+    wkConfig: WkMiniProgramOptions
+  }) => Promise<WkMiniProgramOptions>
   /** 转换完成后的钩子 */
-  done?: (wkConfig: {
-    rootPath: string
-    baseEntryPath: string
-    baseOutputPath: string
-    compilerOptions: WkMiniProgramOptions
-    from: string
-    env: string
-    platform: string
+  done?: (params: {
+    wkConfig: {
+      rootPath: string
+      baseEntryPath: string
+      baseOutputPath: string
+      compilerOptions: WkMiniProgramOptions
+      from: string
+      env: string
+      platform: string
+    } 
+    logger: (type: LogType, text: string) => void
   }) => Promise<void>
 }
 
