@@ -123,13 +123,12 @@ class WkMiniProgram {
               env: this.env,
               platform: this.platform
             },
-            logger: logger,
+            logger: logger
           })
           logger(LogType.Success, `[done] 执行完成 - ${chalk.cyan('hooks.done')}`)
         }
       }
     })
-    
   }
 
   private async handleCopy(index?: number) {

@@ -53,9 +53,7 @@ export type WkMiniProgramHook = {
   /** 初始化配置 */
   initConfig?: (wkConfig: WkMiniProgramOptions) => Promise<WkMiniProgramOptions>
   /** 配置开始前钩子 */
-  beforeCompile?: (params: {
-    wkConfig: WkMiniProgramOptions
-  }) => Promise<WkMiniProgramOptions>
+  beforeCompile?: (params: { wkConfig: WkMiniProgramOptions }) => Promise<WkMiniProgramOptions>
   /** 转换完成后的钩子 */
   done?: (params: {
     wkConfig: {
@@ -66,7 +64,7 @@ export type WkMiniProgramHook = {
       from: string
       env: string
       platform: string
-    } 
+    }
     logger: (type: LogType, text: string) => void
   }) => Promise<void>
 }
